@@ -100,11 +100,41 @@ class EvenOrOdd:
     def __getitem__(self, index):
         return 'Odd' if index % 2 else 'Even'
 
-# Пример использования:
-even_or_odd = EvenOrOdd()
+class PaginationHelper:
+    def __init__(self, info, num):
+        self.items = info
+        self.num = num
+
+    def page_count(self):
+        return (len(self.items) + self.num - 1) // self.num
+
+    def item_count(self):
+        return len(self.items)
+
+    def page_item_count(self, page):
+        if page < 0 or page >= self.page_count():
+            return -1
+        if page == self.page_count() - 1:
+            return len(self.items) % self.num or self.num
+        return self.num
+
+    def page_index(self, item_index):
+        if item_index < 0 or item_index >= len(self.items):
+            return -1
+        return item_index // self.num
+
+def rgb(r, g, b):
+    return f"{max(0, min(255, r)):02X}{max(0, min(255, g)):02X}{max(0, min(255, b)):02X}"
+
+def make_readable(seconds):
+    secs = seconds % 60
+    time = seconds // 60
+    mins = time % 60
+    hours = time //60
+    return f'{hours:02d}:{mins:02d}:{secs:02d}'
+
+
 
 if __name__ == '__main__':
-
-    print(even_or_odd[3])
-
+    print(make_readable(3600))
 
