@@ -134,7 +134,59 @@ def make_readable(seconds):
     return f'{hours:02d}:{mins:02d}:{secs:02d}'
 
 
+def pig_latin(sentence):
+    result = []
+    word = ""
+
+    for char in sentence:
+        if char.isalpha():
+            word += char
+        else:
+            if word:
+                result.append(word[1:] + word[0] + "ay")
+                word = ""
+            result.append(char)
+
+    # Добавляем последнее слово, если есть
+    if word:
+        result.append(word[1:] + word[0] + "ay")
+
+    return ''.join(result)
+
+def generate_hashtag(s):
+    if not s:
+        return False
+    res = '#'
+    for char in s.title():
+        if char.isalpha():
+            res+=char
+    if len(res) > 140:
+        return False
+    return res
+
+
+def dir_reduc(arr):
+    pairs = {'NORTH': 'SOUTH', 'SOUTH': 'NORTH', 'EAST': 'WEST', 'WEST': 'EAST'}
+    stack = []
+
+    for direction in arr:
+        if stack and pairs[direction] == stack[-1]:
+            stack.pop()
+        else:
+            stack.append(direction)
+
+    return stack
+
+
+def product_fib(_prod):
+    fib = [0, 1]
+    while fib[-1] * fib[-2] < _prod:
+        fib.append(fib[-1] + fib[-2])
+    if fib[-1] * fib[-2] == _prod:
+        return [fib[-2], fib[-1], True]
+    return [fib[-2], fib[-1], False]
+
 
 if __name__ == '__main__':
-    print(make_readable(3600))
+    print(product_fib(4895))
 
