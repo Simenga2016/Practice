@@ -186,7 +186,36 @@ def product_fib(_prod):
         return [fib[-2], fib[-1], True]
     return [fib[-2], fib[-1], False]
 
+def perimeter(n):
+    # ## В лоб - слишком медленно, порядка 10с
+    # fib = [0, 1]
+    # for i in range(n):
+    #     fib.append(fib[-1] + fib[-2])
+    # return 4*sum(fib)
+    ## Считая сумму на лету получаем удвоение эффективности, ~5с на те же данные
+    if n == 0:
+        return 4
+    elif n == 1:
+        return 8
+
+    a, b = 0, 1
+    fib_sum = 1
+
+    for _ in range(2, n + 2):
+        a, b = b, a + b
+        fib_sum += b
+
+    return 4 * fib_sum
+
+def sum_pairs(ints, s):
+    seen = {}
+    for index, number in enumerate(ints):
+        target = s - number
+        if target in seen:
+            return [target, number]
+        seen[number] = index
+    return None
 
 if __name__ == '__main__':
-    print(product_fib(4895))
+    print(sum_pairs([1,3]*100000,         3))
 
