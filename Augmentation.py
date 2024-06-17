@@ -4,11 +4,12 @@ import matplotlib.pyplot as plt
 from PIL import Image as PILImage
 import random
 import os
-import concurrent.futures
+from copy import deepcopy
+from multiprocessing.pool import ThreadPool
 
 class Image:
-    def __init__(self, input_path):
-        self.image = self.open_image(input_path)
+    def __init__(self, input_path=None,image = None):
+        self.image = self.open_image(input_path) if input_path != None else image
 
     def __call__(self):
         """
@@ -40,6 +41,9 @@ class Image:
                     return cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
             except Exception as e:
                 raise FileNotFoundError(f"Не удалось открыть изображение по пути: {input_path}. Ошибка: {str(e)}")
+
+    def copy(self):
+        return Image(image = self.image)
 
     def save_image(self, output_path):
         """
@@ -132,13 +136,14 @@ class Image:
         except Exception as e:
             raise Exception(f'Ошибка обрезки: {e}')
 
-    def blur_image(self, power=(11, 11)):
+    def blur_image(self, power_x=11, power_y = 11):
         """
         Размывает изображение с использованием гауссового размытия.
         :param power: Сила размытия по осям (кортеж из двух нечетных целых чисел).
         :return: Размытое изображение.
         """
         try:
+            power = (power_x,power_y)
             if not (isinstance(power, tuple) and len(power) == 2 and all(isinstance(x, int) for x in power)):
                 raise ValueError("Параметр 'power' должен быть кортежем из двух целых чисел.")
             if not (all(x > 0 and x % 2 == 1 for x in power)):
@@ -159,10 +164,11 @@ class Image:
         """
         try:
             shape = self.image.shape[:2]
-            height = height if height else random.randint((shape[0] - x) // 10, shape[0] - 1)
-            width = width if width else random.randint((shape[1] - y) // 10, shape[1] - 1)
-            x = x if x else random.randint(shape[0] // 10, shape[0] - height)
-            y = y if y else random.randint(shape[1] // 10, shape[1] - width)
+            height = height if height else random.randint((shape[0] - 1) // 10, shape[0] - (shape[0] - 1) // 10)
+            width = width if width else random.randint((shape[1] - 1) // 10, shape[1] - (shape[1] - 1) // 10)
+            x = x if x else random.randint(max(shape[0]-height,50) // 10, max(shape[0] - height,100))
+            y = y if y else random.randint(max(shape[1]-width,50) // 10, max(shape[1] - width,100))
+            print(x,y,height,width,shape)
             return self.crop_image(x, y, width, height)
         except Exception as e:
             raise Exception(f'Ошибка обрезки изображения: {e}')
@@ -184,17 +190,11 @@ class Image:
         :return: Изображение с добавленным текстом.
         """
         try:
-            if blur and not (isinstance(blur_power, tuple) and len(blur_power) == 2 and all(
-                    isinstance(x, int) for x in blur_power)):
-                raise ValueError("Параметр 'blur_power' должен быть кортежем из двух целых чисел.")
-            if blur and not (all(x > 0 and x % 2 == 1 for x in blur_power)):
-                raise ValueError("Значения в параметре 'blur_power' должны быть нечетными и больше нуля.")
-
             mask = np.zeros_like(self.image)
             cv2.putText(mask, text, position, font, font_scale, color, thickness, lineType=cv2.LINE_AA)
 
             if blur:
-                mask = cv2.GaussianBlur(mask, blur_power, 0)
+                mask = cv2.GaussianBlur(mask, blur_power[0],blur_power[1], 0)
             if angle != 0:
                 (h, w) = mask.shape[:2]
                 center = (w // 2, h // 2)
@@ -277,37 +277,46 @@ class Image:
         except Exception as e:
             raise Exception(f'Ошибка визуализации: {e}')
 
-    def process_image(self, function_tuples):
+    def augment(self, process_functions):
         """
-        Выполняет функции обработки изображения.
-
-        :param function_tuples: Список кортежей (функция, аргументы), которые нужно выполнить.
+         Функция обработки, должна возвращать несколько измененных изображений, должна обрабатывать их параллельно.
+         Пока не работает. //17.06.2024 -> Рассмотреть более подробно библиотеки. Возможно, переписать логику.
         """
         try:
-            for func, args in function_tuples:
-                func(*args)
-        except Exception as e:
-            print(f'Ошибка выполнения функции: {e}')
+            # Function to apply transformations from a sublist
+            def apply_transformations(image_copy, transformations):
+                for func, args in transformations:
+                    func(*args)
+                return image_copy
 
-    def process_images_parallel(self, process_functions):
-        """
-        Выполняет функции обработки изображений параллельно.
+            # Create a ThreadPool for parallel processing
+            pool = ThreadPool()
 
-        :param process_functions: Список списков кортежей (функция, аргументы), которые нужно выполнить.
-        :return: Список обработанных изображений.
-        """
-        processed_images = []
-        with concurrent.futures.ThreadPoolExecutor() as executor:
-            futures = []
+            # List to store processed Image instances
+            processed_images = []
+
+            # Apply transformations in each sublist concurrently
             for functions in process_functions:
-                futures.append(executor.submit(self.process_image, functions))
-            for future in concurrent.futures.as_completed(futures):
-                try:
-                    future.result()  # Ждем завершения выполнения
-                    processed_images.append(self.image.copy())  # Добавляем обработанное изображение в список
-                except Exception as e:
-                    print(f'Ошибка выполнения процесса: {e}')
-        return processed_images
+                # Make a deep copy of self.image for each sublist
+                image_copy = deepcopy(self.image)
+
+                # Submit each sublist of functions to the ThreadPool
+                result = pool.apply_async(apply_transformations, args=(image_copy, functions))
+                processed_image = result.get()  # Get the processed image copy
+
+                # Create a new Image instance with the processed image copy
+                processed_image_instance = Image(image=processed_image)
+                processed_images.append(processed_image_instance)
+
+            # Close the pool and wait for all tasks to complete
+            pool.close()
+            pool.join()
+
+            # Return the list of processed Image instances
+            return processed_images
+
+        except Exception as e:
+            raise Exception(f'Ошибка при параллельной обработке: {e}')
 
 # if __name__ == '__main__':
 #     input_image_path = 'test1.jpg'  # Замените на путь к вашему входному изображению
@@ -341,31 +350,35 @@ if __name__ == "__main__":
     output_image_path = './output_image.png'  # Замените на путь к вашей выходной директории
 
     # Создаем экземпляр класса Image
-    image = Image(input_image_path)
+    img = Image(input_image_path)
 
     # Определяем список списков функций для каждого процесса обработки изображений
     process_functions = [
         [
-            (image.resize_image, (640, 400)),
-            (image.blur_image, (19, 41)),
+            (img.resize_image, (640, 400)),
         ],
         [
-            (image.change_saturation, (4.0,)),
-            (image.random_crop_image, (800, 600)),
-            (image.change_contrast, (0.5,)),
+            (img.change_saturation, (4.0,)),
+            (img.change_contrast, (0.5,)),
+        ],
+        [
+        ],
+        [
+            (img.change_contrast, (3,)),
+        ],
+        [
+            (img.resize_image, (120, 400)),
+        ],
+        [
+            (img.resize_image, (640, 800)),
+        ],
+        [
         ],
     ]
-    for _ in range(11):
-        process_functions.append([
-            [(image.random_crop_image, (320, 400)), ]
-        ])
 
-    # Выполняем функции параллельно
-    processed_images = image.process_images_parallel(process_functions)
+    processed_images = img.augment(process_functions)
 
-    # Визуализируем обработанные изображения
-    for idx, processed_image in enumerate(processed_images):
-        cv2.imshow(f'Processed Image {idx}', processed_image)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
-
+    # Now processed_images is a list of Image instances
+    for i, processed_img in enumerate(processed_images):
+        print(f"Processed Image {i + 1}:")
+        processed_img.visualize_image()
