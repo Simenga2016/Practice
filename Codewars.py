@@ -216,6 +216,21 @@ def sum_pairs(ints, s):
         seen[number] = index
     return None
 
-if __name__ == '__main__':
-    print(sum_pairs([1,3]*100000,         3))
+def validate_password(password):
+    import re
+    pattern = r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$'
+    if re.match(pattern,password):
+        return True
+    return False
 
+def ip_count(start,end):
+    res = 0
+    first = list(map(int, start.split('.')))
+    second = list(map(int, end.split('.')))
+    for i in range(len(first)):
+        res +=(second[i]-first[i]) * 256 ** (3-i)
+    return res
+
+
+if __name__ == '__main__':
+    print(ip_count("10.0.0.0", "10.0.0.50"))
