@@ -3,12 +3,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image as PILImage
 import random
+import copy
 import os
-from copy import deepcopy
-from multiprocessing.pool import ThreadPool
+import multiprocessing
+
+import Augmentation
+
 
 class Image:
-    def __init__(self, input_path=None,image = None):
+    def __init__(self, input_path=None, image=None):
         self.image = self.open_image(input_path) if input_path != None else image
 
     def __call__(self):
@@ -43,7 +46,13 @@ class Image:
                 raise FileNotFoundError(f"Не удалось открыть изображение по пути: {input_path}. Ошибка: {str(e)}")
 
     def copy(self):
-        return Image(image = self.image)
+        """
+        Создаёт идентичный объект класса Image.
+
+        :return: Копия изображения.
+        """
+        # return Image(image = (self.image)[:])
+        return copy.deepcopy(self)
 
     def save_image(self, output_path):
         """
@@ -51,7 +60,8 @@ class Image:
         :param output_path: Путь для сохранения изображения.
         """
         try:
-            cv2.imwrite(output_path, self.image)
+            if self.image is not None and self.image.size > 0:
+                cv2.imwrite(output_path, self.image)
         except Exception as e:
             raise Exception(f'Ошибка сохранения: {e}')
 
@@ -136,14 +146,14 @@ class Image:
         except Exception as e:
             raise Exception(f'Ошибка обрезки: {e}')
 
-    def blur_image(self, power_x=11, power_y = 11):
+    def blur_image(self, power_x=11, power_y=11):
         """
         Размывает изображение с использованием гауссового размытия.
         :param power: Сила размытия по осям (кортеж из двух нечетных целых чисел).
         :return: Размытое изображение.
         """
         try:
-            power = (power_x,power_y)
+            power = (power_x, power_y)
             if not (isinstance(power, tuple) and len(power) == 2 and all(isinstance(x, int) for x in power)):
                 raise ValueError("Параметр 'power' должен быть кортежем из двух целых чисел.")
             if not (all(x > 0 and x % 2 == 1 for x in power)):
@@ -166,10 +176,10 @@ class Image:
             shape = self.image.shape[:2]
             height = height if height else random.randint((shape[0] - 1) // 10, shape[0] - (shape[0] - 1) // 10)
             width = width if width else random.randint((shape[1] - 1) // 10, shape[1] - (shape[1] - 1) // 10)
-            x = x if x else random.randint(max(shape[0]-height,50) // 10, max(shape[0] - height,100))
-            y = y if y else random.randint(max(shape[1]-width,50) // 10, max(shape[1] - width,100))
-            print(x,y,height,width,shape)
-            return self.crop_image(x, y, width, height)
+            x = x if x else random.randint(max(shape[0] - height, 50) // 10, max(shape[0] - height, 100))
+            y = y if y else random.randint(max(shape[1] - width, 50) // 10, max(shape[1] - width, 100))
+            # print(x, y, height, width, shape)
+            self.crop_image(x, y, width, height)
         except Exception as e:
             raise Exception(f'Ошибка обрезки изображения: {e}')
 
@@ -194,7 +204,7 @@ class Image:
             cv2.putText(mask, text, position, font, font_scale, color, thickness, lineType=cv2.LINE_AA)
 
             if blur:
-                mask = cv2.GaussianBlur(mask, blur_power[0],blur_power[1], 0)
+                mask = cv2.GaussianBlur(mask, blur_power[0], blur_power[1], 0)
             if angle != 0:
                 (h, w) = mask.shape[:2]
                 center = (w // 2, h // 2)
@@ -219,7 +229,8 @@ class Image:
             noisy = self.image + gauss.reshape(row, col, ch)
             self.image = np.clip(noisy, 0, 255).astype(np.uint8)
         except Exception as e:
-            raise Exception(f'Ошибка добавления шума: {e}')
+            # raise Exception(f'Ошибка добавления шума: {e}')
+            print(f'Ошибка добавления шума: {e}')
 
     def change_contrast(self, contrast=1.0):
         """
@@ -232,7 +243,8 @@ class Image:
                 raise ValueError("Контраст должен быть неотрицательным.")
             self.image = cv2.convertScaleAbs(self.image, alpha=contrast, beta=0)
         except Exception as e:
-            raise Exception(f'Ошибка изменения контраста: {e}')
+            # raise Exception(f'Ошибка изменения контраста: {e}')
+            print(f'Ошибка изменения контраста: {e}')
 
     def change_brightness(self, brightness=1.0):
         """
@@ -245,7 +257,8 @@ class Image:
                 raise ValueError("Яркость должна быть неотрицательной.")
             self.image = cv2.convertScaleAbs(self.image, alpha=brightness, beta=0)
         except Exception as e:
-            raise Exception(f'Ошибка изменения яркости: {e}')
+            # raise Exception(f'Ошибка изменения яркости: {e}')
+            print(f'Ошибка изменения яркости: {e}')
 
     def change_saturation(self, saturation=1.0):
         """
@@ -263,61 +276,246 @@ class Image:
             hsv_image = np.uint8(hsv_image)
             self.image = cv2.cvtColor(hsv_image, cv2.COLOR_HSV2BGR)
         except Exception as e:
-            raise Exception(f'Ошибка изменения насыщенности: {e}')
+            # raise Exception(f'Ошибка изменения насыщенности: {e}')
+            print(f'Ошибка изменения насыщенности: {e}')
 
     def visualize_image(self):
         """
         Визуализирует изображение с помощью matplotlib.
         """
         try:
-            image_rgb = cv2.cvtColor(self.image, cv2.COLOR_BGR2RGB)
-            plt.imshow(image_rgb)
-            plt.axis('off')
-            plt.show()
+            if self.image is not None and self.image.size > 0:
+                image_rgb = cv2.cvtColor(self.image, cv2.COLOR_BGR2RGB)
+                plt.imshow(image_rgb)
+                plt.axis('off')
+                plt.show()
         except Exception as e:
-            raise Exception(f'Ошибка визуализации: {e}')
+            # raise Exception(f'Ошибка визуализации: {e}')
+            print(f'Ошибка визуализации: {e}')
 
-    def augment(self, process_functions):
+    def augment1(self, functions):
         """
-         Функция обработки, должна возвращать несколько измененных изображений, должна обрабатывать их параллельно.
-         Пока не работает. //17.06.2024 -> Рассмотреть более подробно библиотеки. Возможно, переписать логику.
+        Применяет набор функций к изображению для его аугментации.
+
+        :param functions: Список кортежей (функция, аргументы) для применения к изображению.
+        """
+        for func, args in functions:
+            try:
+                func(*args)
+            except Exception as e:
+                # raise Exception(f'Ошибка применения функции {func.__name__}: {e}')
+                print(f'Ошибка применения функции {func.__name__}: {e}')
+
+    def augment(self, functions):
+        """
+        Применяет набор функций к изображению для его аугментации.
+        :param functions: Список кортежей (имя функции, аргументы) для применения к изображению.
+        """
+        for func_name, args in functions:
+            try:
+                # Получаем метод по его имени
+                func = getattr(self, func_name)
+                func(*args)
+            except Exception as e:
+                # raise Exception(f'Ошибка применения функции {func_name}: {e}')
+                print(f'Ошибка применения функции {func_name}: {e}')
+
+    def multy_augment(self, process_functions_list):
+        """
+        Применяет наборы функций к изображению параллельно на копиях объекта класса.
+        Всё ещё не работает //18.06.2024 -> Переписать в отдельный общий класс нескольких изображений?
+        :param process_functions_list: Список списков кортежей (функция, аргументы) для применения к изображению.
+        """
+        #
+        # def process_copy(process_functions, input_image):
+        #     img_copy = input_image.copy()
+        #     img_copy.augment(process_functions)
+        #     return img_copy
+
+        res = []
+        for funcs in process_functions_list:
+            coppied = self.copy()  # Создаем копию оригинального изображения для каждой операции
+            print(coppied)
+            coppied.augment(funcs)
+            res.append(coppied)
+
+        return res
+
+
+class Images:
+    def __init__(self):
+        self.num = 0
+        self.images = []
+        self.path_out = '.'
+        self.random_params = {
+    'blur': {
+        'enable': False,
+        'power_x': (5, 100),
+        'power_y': (5, 100)
+    },
+    'brightness': {
+        'enable': False,
+        'range': (10, 200)
+    },
+    'flip': {
+        'enable': False,
+        'flip_code': 0
+    },
+    'saturation': {
+        'enable': False,
+        'range': (10, 200)
+    },
+    'noise': {
+        'enable': False,
+        'mean_range': (4, 32),
+        'variance_range': (4, 64)
+    },
+    'contrast': {
+        'enable': False,
+        'range': (10, 200)
+    },
+    'crop': {
+        'enable': False,
+        'random': False,
+        'top_left': (4, 32),
+        'top_right': (4, 64),
+        'bottom_left': (4, 64),
+        'bottom_right': (4, 64)
+    },
+    'resize': {
+        'enable': False,
+        'width_range': (128, 1024),
+        'height_range': (128, 1024)
+    },
+    'rotate': {
+        'enable': False,
+        'angle_range': (-179, 179)
+    },
+    'text': {
+        'enable': False,
+        'text': 'Hello, world!',
+        'position_x_range': (0, 1024),
+        'position_y_range': (0, 1024),
+        'font': cv2.FONT_HERSHEY_SIMPLEX,
+        'font_scale_range': (0.5,3),
+        'color_range': ((0, 255), (0, 255), (2, 255)),
+        'thickness_range': (1,3),
+        'line_type': False,
+        'blur_range': ((3, 37), (3, 37)),
+        'angle_range': (-179, 179)
+    }
+}
+
+    # def __call__(self):
+    #     return self
+
+    def open_image(self, path):
+        """
+        Открыть изображение по пути как объект класса Image
+        :param path: Путь к изображению.
+        :return: Возвращает единицу в случае успеха.
         """
         try:
-            # Function to apply transformations from a sublist
-            def apply_transformations(image_copy, transformations):
-                for func, args in transformations:
-                    func(*args)
-                return image_copy
-
-            # Create a ThreadPool for parallel processing
-            pool = ThreadPool()
-
-            # List to store processed Image instances
-            processed_images = []
-
-            # Apply transformations in each sublist concurrently
-            for functions in process_functions:
-                # Make a deep copy of self.image for each sublist
-                image_copy = deepcopy(self.image)
-
-                # Submit each sublist of functions to the ThreadPool
-                result = pool.apply_async(apply_transformations, args=(image_copy, functions))
-                processed_image = result.get()  # Get the processed image copy
-
-                # Create a new Image instance with the processed image copy
-                processed_image_instance = Image(image=processed_image)
-                processed_images.append(processed_image_instance)
-
-            # Close the pool and wait for all tasks to complete
-            pool.close()
-            pool.join()
-
-            # Return the list of processed Image instances
-            return processed_images
-
+            self.images.append(Image(path))
+            return 1
         except Exception as e:
-            raise Exception(f'Ошибка при параллельной обработке: {e}')
+            # raise f'Ошибка открытия изображения:{e}'
+            print(f'Ошибка открытия изображения:{e}')
 
+    def save_to(self, path=None, extension="jpeg"):
+        try:
+            self.path_out = path if path else self.path_out
+            counter = 0
+            for img in self.images:
+                img.save_image(f'{self.path_out}{f"({counter})" if counter else ""}.{extension}')
+                counter += 1
+        except Exception as e:
+            # raise  f'Ошибка массового сохранения {e}'
+            print(f'Ошибка массового сохранения {e}')
+
+    def open_folder(self, path='.'):
+        """
+        Открывает все изображения в папке как объекты класса Image.
+        :param path: Путь к папке.
+        :return: Возвращает единицу в случае успеха.
+        """
+        # Допустимые расширения файлов изображений
+        valid_extensions = ('.jpg', '.jpeg', '.png', '.gif', '.bmp')
+
+        try:
+            # Получаем список всех файлов в указанной папке
+            for file_name in os.listdir(path):
+                # Полный путь к файлу
+                file_path = os.path.join(path, file_name)
+
+                # Проверяем, что это файл и что у него допустимое расширение
+                if os.path.isfile(file_path) and file_name.lower().endswith(valid_extensions):
+                    # Открываем изображение
+                    self.open_image(file_path)
+            return 1
+        except Exception as e:
+            print(f"Произошла ошибка открытия папки: {e}")
+
+    def augmentation_all(self, functions):
+        try:
+            for _ in self.images:
+                _.augment(functions)
+            return self.images
+        except Exception as e:
+            # raise f'Ошибка в массовой обработке: {e}'
+            print(f'Ошибка в массовой обработке: {e}')
+
+
+    def augmentation_random(self, params):
+        if isinstance(params,dict):
+            for key, value in params.items():
+                if key in self.random_params:
+                    if isinstance(value, dict):
+                        for sub_key, sub_value in value.items():
+                            if sub_key in self.random_params[key]:
+                                self.random_params[key][sub_key] = sub_value
+                    else:
+                        self.random_params[key] = value
+        
+        for img in self.images:
+            if self.random_params.get('blur', {}).get('enable', False):
+                power_x = self.random_params.get('blur', {}).get('power_x', False)
+                power_y = self.random_params.get('blur', {}).get('power_y', False)
+                img.blur_image(power_x,power_y)
+    
+            if self.random_params.get('brightness', {}).get('enable', False):
+                brightness = random.randint(
+                    *self.random_params.get('brightness', {}).get('range', False))/50
+                img.change_brightness(brightness)
+    
+            if self.random_params.get('flip', {}).get('enable', False):
+                if self.random_params.get('flip', {}).get('flip_code', False):
+                    img.flip_horizontal()
+                else:
+                    img.flip_vertical()
+    
+            if self.random_params.get('saturation', {}).get('enable', False):
+                img.change_saturation(self.random_params['saturation'])
+    
+            if self.random_params.get('noise', {}).get('enable', False):
+                img.add_noise(self.random_params['noise'])
+    
+            if self.random_params.get('contrast', {}).get('enable', False):
+                img.change_contrast(self.random_params['contrast'])
+    
+            if self.random_params.get('crop', {}).get('enable', False):
+                img.crop_image(self.random_params['crop'])
+                img.random_crop_image()
+    
+            if self.random_params.get('resize', {}).get('enable', False):
+                img.resize_image(self.random_params['resize'])
+    
+            if self.random_params.get('rotate', {}).get('enable', False):
+                img.rotate_image(self.random_params['rotate'])
+    
+            if self.random_params.get('text', {}).get('enable', False):
+                img.add_text_to_image(self.random_params['text'])
+            
 # if __name__ == '__main__':
 #     input_image_path = 'test1.jpg'  # Замените на путь к вашему входному изображению
 #     output_image_path = './output_image.png'  # Замените на путь к вашей выходной директории
@@ -352,33 +550,11 @@ if __name__ == "__main__":
     # Создаем экземпляр класса Image
     img = Image(input_image_path)
 
-    # Определяем список списков функций для каждого процесса обработки изображений
-    process_functions = [
-        [
-            (img.resize_image, (640, 400)),
-        ],
-        [
-            (img.change_saturation, (4.0,)),
-            (img.change_contrast, (0.5,)),
-        ],
-        [
-        ],
-        [
-            (img.change_contrast, (3,)),
-        ],
-        [
-            (img.resize_image, (120, 400)),
-        ],
-        [
-            (img.resize_image, (640, 800)),
-        ],
-        [
-        ],
-    ]
+    process_functions_list = [(img.rotate_image, {'angle': 45}), (img.flip_vertical, {})]
 
-    processed_images = img.augment(process_functions)
+    augmented_images = img.augment(process_functions_list)
 
-    # Now processed_images is a list of Image instances
-    for i, processed_img in enumerate(processed_images):
-        print(f"Processed Image {i + 1}:")
-        processed_img.visualize_image()
+    # Визуализация результатов
+    for i, augmented_img in enumerate(augmented_images):
+        print(f'Image {i + 1}:')
+        augmented_img.visualize_image()
