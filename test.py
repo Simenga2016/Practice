@@ -77,6 +77,7 @@ if __name__ == "__main__":
     Img_Processor.clear()
     Img_Processor.open_folder('input/')
 
+    # Временной тест
     t1 = time.time()
     Img_Processor.augmentation_random_parallel(params)
     Img_Processor.save_to('path_to_output_directory/out')

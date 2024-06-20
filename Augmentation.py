@@ -7,10 +7,14 @@ import copy
 import os
 import multiprocessing
 
-import Augmentation
-
 
 def augment_one_s(task):
+    """
+    Обработка изображения согласно параметрам. Вынесена из классов для корректной работы с потоками.
+
+    :param task: Изображение класса Image и параметры аугментации
+    :return: Обработанное изображение
+    """
     img, params = task
     if params.get('blur', {}).get('enable', False):
         power_x = random.randint(*params.get('blur', {}).get('power_x', (11, 11)))
@@ -72,7 +76,7 @@ def augment_one_s(task):
             font = params.get('text', {}).get('position_x_range', cv2.FONT_HERSHEY_SIMPLEX)
             scale = random.randint(*params.get('text', {}).get('font_scale_range', (10, 10))) / 10
             color_tmp = params.get('text', {}).get('color_range',
-                                                               ((255, 255), (255, 255), (255, 255)))
+                                                   ((255, 255), (255, 255), (255, 255)))
             color = (
                 random.randint(*color_tmp[0]),
                 random.randint(*color_tmp[1]),
@@ -89,6 +93,7 @@ def augment_one_s(task):
 
             img.add_text_to_image(txt, position, scale, color, thick, blur, power, angle)
     return img
+
 
 class Image:
     def __init__(self, input_path=None, image=None):
@@ -231,9 +236,12 @@ class Image:
     def blur_image(self, power_x=11, power_y=11):
         """
         Размывает изображение с использованием гауссового размытия.
-        :param power: Сила размытия по осям (кортеж из двух нечетных целых чисел).
+
+        :param power_x: Сила размытия по оси Ox.
+        :param power_y: Сила размытия по оси Oy.
         :return: Размытое изображение.
         """
+
         try:
             power = (power_x, power_y)
             if not (isinstance(power, tuple) and len(power) == 2 and all(isinstance(x, int) for x in power)):
@@ -424,6 +432,11 @@ class Image:
 
 
 class Images:
+    """
+    Класс обработчика изображений. Содержит в себе массив объектов класса Image как self.images. Поддерживает массовую
+    аугментацию всех изображений.
+    """
+
     def __init__(self):
         self.num = 0
         self.images = []
@@ -441,7 +454,7 @@ class Images:
             },
             'flip': {
                 'enable': False,
-                'flip_code': (-1, 0, 1) ###
+                'flip_code': (-1, 0, 1)  ###
             },
             'saturation': {
                 'enable': False,
@@ -481,9 +494,9 @@ class Images:
                 'font': cv2.FONT_HERSHEY_SIMPLEX,
                 'font_scale_range': (3, 30),
                 'color_range': ((0, 255), (0, 255), (0, 255)),
-                'thickness_range': (1, 3), ###
+                'thickness_range': (1, 3),  ###
                 'enable_blur': False,
-                'blur_range': ((3, 37), (3, 37)), ###
+                'blur_range': ((3, 37), (3, 37)),  ###
                 'angle_range': (-10, 10)
             }
         }
@@ -586,7 +599,6 @@ class Images:
 
         self.multiple(self.random_params.get('multiplicator', 1))
 
-
         for img in self.images:
             if self.random_params.get('blur', {}).get('enable', False):
                 power_x = random.randint(*self.random_params.get('blur', {}).get('power_x', (11, 11)))
@@ -646,8 +658,9 @@ class Images:
                         random.randint(*self.random_params.get('text', {}).get('position_y_range', (0, 0)))
                     )
                     font = self.random_params.get('text', {}).get('position_x_range', cv2.FONT_HERSHEY_SIMPLEX)
-                    scale = random.randint(*self.random_params.get('text', {}).get('font_scale_range', (10, 10)))/10
-                    color_tmp = self.random_params.get('text', {}).get('color_range', ((255, 255), (255, 255), (255, 255)))
+                    scale = random.randint(*self.random_params.get('text', {}).get('font_scale_range', (10, 10))) / 10
+                    color_tmp = self.random_params.get('text', {}).get('color_range',
+                                                                       ((255, 255), (255, 255), (255, 255)))
                     color = (
                         random.randint(*color_tmp[0]),
                         random.randint(*color_tmp[1]),
@@ -665,8 +678,14 @@ class Images:
                     img.add_text_to_image(txt, position, scale, color, thick, blur, power, angle)
                 # img.add_text_to_image(text)
         return self.images
-    
-    def augment_one(self,img):
+
+    def augment_one(self, img):
+        """
+        Изменяет одно изображение согласно параметрам родительского объекта.
+
+        :param img: Объект класса Image.
+        :return: None
+        """
         if self.random_params.get('blur', {}).get('enable', False):
             power_x = random.randint(*self.random_params.get('blur', {}).get('power_x', (11, 11)))
             power_y = random.randint(*self.random_params.get('blur', {}).get('power_y', (11, 11)))
@@ -685,7 +704,6 @@ class Images:
                 img.flip_horizontal()
             elif flip == 1:
                 img.flip_vertical()
-
 
         if self.random_params.get('saturation', {}).get('enable', False):
             img.change_saturation(
@@ -745,7 +763,7 @@ class Images:
 
                 img.add_text_to_image(txt, position, scale, color, thick, blur, power, angle)
 
-    def augmentation_random_parallel(self, params = {}):
+    def augmentation_random_parallel(self, params={}):
         """
         Случайным образом обрабатывает все изображения объекта класса согласно параметрам.
 
@@ -763,17 +781,16 @@ class Images:
                     else:
                         self.random_params[key] = value
 
-
-
         self.multiple(self.random_params.get('multiplicator', 1))
 
-        tasks = [[img,self.random_params] for img in self.images]
+        tasks = [[img, self.random_params] for img in self.images]
 
         with multiprocessing.Pool(processes=multiprocessing.cpu_count()) as pool:
             result = pool.map(augment_one_s, tasks)
 
         self.images = result
         return self.images
+
 
 # if __name__ == '__main__':
 #     input_image_path = 'test1.jpg'  # Замените на путь к вашему входному изображению

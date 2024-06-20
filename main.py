@@ -6,6 +6,13 @@ import os
 
 
 def gui_work():
+    """
+    Запускает графический интерфейс для настройки параметров и выполняет обработку изображений на основе введённых
+    данных.
+
+    :return: None
+    """
+
     Interface.create_gui()
     params = Interface.on_button_clicked()
     Img_Processor = Augmentation.Images()

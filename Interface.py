@@ -2,6 +2,13 @@ import matplotlib.pyplot as plt
 from matplotlib.widgets import RangeSlider, CheckButtons, TextBox, Button
 
 def convert_data_to_random_params(data):
+    """
+    Преобразует данные формата интерфейса в формат словаря класса Augmentation.Images
+
+    :param data: Набор специфических данных, полученных из функции on_button_clicked описанной ниже.
+    :return: Словарь формата класса Images.random_params.
+    """
+
     random_params = {
         'multiplicator': int(data['multy']),
         'path_in' : data['directory_in'],
@@ -70,6 +77,13 @@ def convert_data_to_random_params(data):
     return random_params
 
 def create_gui(num = None):
+    """
+
+    :param num: Номер папки вывода - необходимо для многократного использования интерфейса, для отсутствия
+     перезаписи изображений.
+    :return: None
+    """
+
     global sliders, checkboxes, check_buttons, text_dir_in_box, text_dir_out_box, button, text_multy_box
 
     # Создаем слайдеры RangeSlider
@@ -191,6 +205,12 @@ def create_gui(num = None):
     plt.show()
 
 def on_button_clicked(event = None):
+    """
+
+    :param event: Произошедшее событие
+    :return: словарь формата Augmentation.Images.random_params
+    """
+
     global data_dict
 
     # Собираем значения слайдеров
