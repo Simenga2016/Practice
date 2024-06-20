@@ -231,6 +231,12 @@ def ip_count(start,end):
         res +=(second[i]-first[i]) * 256 ** (3-i)
     return res
 
+def sequre(password):
+    import re
+    pattern = r'^[A-Za-z\d]{1,}$'
+    if re.match(pattern,password):
+        return True
+    return False
 
 if __name__ == '__main__':
-    print(ip_count("10.0.0.0", "10.0.0.50"))
+    print(sequre('@aBBo4'))
