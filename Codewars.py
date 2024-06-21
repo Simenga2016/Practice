@@ -238,5 +238,8 @@ def sequre(password):
         return True
     return False
 
+def int32_to_ip(int32):
+    return f'{(int32 >> 24) & 0xFF}.{(int32 >> 16) & 0xFF}.{(int32 >> 8) & 0xFF}.{int32 & 0xFF}' #Ez!
+
 if __name__ == '__main__':
-    print(sequre('@aBBo4'))
+    print(int32_to_ip(2149583361))
