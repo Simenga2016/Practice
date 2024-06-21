@@ -3,7 +3,7 @@ import Augmentation
 import Interface
 
 if __name__ == "__main__":
-    Img_Processor = Augmentation.Images()
+    Img_Processor_GUI = Augmentation.Images()
     Interface.create_gui()
     # Тест интерфейса
     params = Interface.on_button_clicked()
@@ -74,19 +74,19 @@ if __name__ == "__main__":
     #     }
     # }
 
-    Img_Processor.clear()
-    Img_Processor.open_folder('input/')
+    Img_Processor_GUI.clear()
+    Img_Processor_GUI.open_folder('input/')
 
     # Временной тест
     t1 = time.time()
-    Img_Processor.augmentation_random_parallel(params)
-    Img_Processor.save_to('path_to_output_directory/out')
-    print('parallel time: ', time.time() - t1, 'total:', len(Img_Processor.images))
+    Img_Processor_GUI.augmentation_random_parallel(params)
+    Img_Processor_GUI.save_to('path_to_output_directory/out')
+    print('parallel time: ', time.time() - t1, 'total:', len(Img_Processor_GUI.images))
 
-    Img_Processor.clear()
-    Img_Processor.open_folder('input/')
+    Img_Processor_GUI.clear()
+    Img_Processor_GUI.open_folder('input/')
 
     t1 = time.time()
-    Img_Processor.augmentation_random(params)
-    Img_Processor.save_to('path_to_output_directory1/out')
-    print('linear time:', time.time() - t1, 'total:', len(Img_Processor.images))
+    Img_Processor_GUI.augmentation_random(params)
+    Img_Processor_GUI.save_to('path_to_output_directory1/out')
+    print('linear time:', time.time() - t1, 'total:', len(Img_Processor_GUI.images))

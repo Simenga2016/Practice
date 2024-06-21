@@ -16,82 +16,83 @@ def augment_one_s(task):
     :return: Обработанное изображение
     """
     img, params = task
-    if params.get('blur', {}).get('enable', False):
-        power_x = random.randint(*params.get('blur', {}).get('power_x', (11, 11)))
-        power_y = random.randint(*params.get('blur', {}).get('power_y', (11, 11)))
-        power_y += 1 if power_y % 2 == 0 else 0
-        power_x += 1 if power_x % 2 == 0 else 0
-        img.blur_image(power_x, power_y)
+    if img.image is not None and img.image.size > 0:
+        if params.get('blur', {}).get('enable', False):
+            power_x = random.randint(*params.get('blur', {}).get('power_x', (11, 11)))
+            power_y = random.randint(*params.get('blur', {}).get('power_y', (11, 11)))
+            power_y += 1 if power_y % 2 == 0 else 0
+            power_x += 1 if power_x % 2 == 0 else 0
+            img.blur_image(power_x, power_y)
 
-    if params.get('brightness', {}).get('enable', False):
-        brightness = random.randint(
-            *params.get('brightness', {}).get('range', (100, 100))) / 100
-        img.change_brightness(brightness)
+        if params.get('brightness', {}).get('enable', False):
+            brightness = random.randint(
+                *params.get('brightness', {}).get('range', (100, 100))) / 100
+            img.change_brightness(brightness)
 
-    if params.get('flip', {}).get('enable', False):
-        flip = random.choice(params.get('flip', {}).get('flip_code', 0))
-        if flip == -1:
-            img.flip_horizontal()
-        elif flip == 1:
-            img.flip_vertical()
+        if params.get('flip', {}).get('enable', False):
+            flip = random.choice(params.get('flip', {}).get('flip_code', 0))
+            if flip == -1:
+                img.flip_horizontal()
+            elif flip == 1:
+                img.flip_vertical()
 
-    if params.get('saturation', {}).get('enable', False):
-        img.change_saturation(
-            random.randint(*params.get('saturation', {}).get('range', (50, 50))) / 100)
+        if params.get('saturation', {}).get('enable', False):
+            img.change_saturation(
+                random.randint(*params.get('saturation', {}).get('range', (50, 50))) / 100)
 
-    if params.get('noise', {}).get('enable', False):
-        var = random.randint(*params.get('saturation', {}).get('variance_range', (4, 4)))
-        mean = random.randint(*params.get('saturation', {}).get('mean_range', (4, 4)))
-        img.add_noise(var, mean)
+        if params.get('noise', {}).get('enable', False):
+            var = random.randint(*params.get('saturation', {}).get('variance_range', (4, 4)))
+            mean = random.randint(*params.get('saturation', {}).get('mean_range', (4, 4)))
+            img.add_noise(var, mean)
 
-    if params.get('contrast', {}).get('enable', False):
-        img.change_contrast(
-            random.randint(*params.get('saturation', {}).get('range', (100, 100))) / 100)
+        if params.get('contrast', {}).get('enable', False):
+            img.change_contrast(
+                random.randint(*params.get('saturation', {}).get('range', (100, 100))) / 100)
 
-    if params.get('crop', {}).get('enable', False):
-        x = random.randint(*params.get('crop', {}).get('left', (0, 0)))
-        y = random.randint(*params.get('crop', {}).get('top', (0, 0)))
-        wid = random.randint(*params.get('crop', {}).get('window_width', (0, 0)))
-        hei = random.randint(*params.get('crop', {}).get('window_height', (0, 0)))
-        if params.get('crop', {}).get('random', False):
-            img.random_crop_image(wid, hei, x, y)
-        else:
-            img.crop_image(x, y, wid, hei)
+        if params.get('crop', {}).get('enable', False):
+            x = random.randint(*params.get('crop', {}).get('left', (0, 0)))
+            y = random.randint(*params.get('crop', {}).get('top', (0, 0)))
+            wid = random.randint(*params.get('crop', {}).get('window_width', (0, 0)))
+            hei = random.randint(*params.get('crop', {}).get('window_height', (0, 0)))
+            if params.get('crop', {}).get('random', False):
+                img.random_crop_image(wid, hei, x, y)
+            else:
+                img.crop_image(x, y, wid, hei)
 
-    if params.get('resize', {}).get('enable', False):
-        wid = random.randint(*params.get('resize', {}).get('width_range', (512, 512)))
-        hei = random.randint(*params.get('resize', {}).get('height_range', (512, 512)))
-        img.resize_image(wid, hei)
+        if params.get('resize', {}).get('enable', False):
+            wid = random.randint(*params.get('resize', {}).get('width_range', (512, 512)))
+            hei = random.randint(*params.get('resize', {}).get('height_range', (512, 512)))
+            img.resize_image(wid, hei)
 
-    if params.get('rotate', {}).get('enable', False):
-        img.rotate_image(random.randint(*params.get('rotate', {}).get('angle_range', (0, 0))))
+        if params.get('rotate', {}).get('enable', False):
+            img.rotate_image(random.randint(*params.get('rotate', {}).get('angle_range', (0, 0))))
 
-    if params.get('text', {}).get('enable', False):
-        text = params.get('text', {}).get('text', ' ')
-        for txt in text.split('\n'):
-            position = (
-                random.randint(*params.get('text', {}).get('position_x_range', (0, 0))),
-                random.randint(*params.get('text', {}).get('position_y_range', (0, 0)))
-            )
-            font = params.get('text', {}).get('position_x_range', cv2.FONT_HERSHEY_SIMPLEX)
-            scale = random.randint(*params.get('text', {}).get('font_scale_range', (10, 10))) / 10
-            color_tmp = params.get('text', {}).get('color_range',
-                                                   ((255, 255), (255, 255), (255, 255)))
-            color = (
-                random.randint(*color_tmp[0]),
-                random.randint(*color_tmp[1]),
-                random.randint(*color_tmp[2])
-            )
-            thick = random.randint(*params.get('text', {}).get('thickness_range', (1, 1)))
-            blur = params.get('text', {}).get('enable_blur', False)
-            power_tmp = params.get('text', {}).get('blur_range', ((3, 37), (3, 37)))
-            power = (
-                random.randint(*power_tmp[0]),
-                random.randint(*power_tmp[1])
-            )
-            angle = random.randint(*params.get('text', {}).get('angle_range', (-15, 15)))
+        if params.get('text', {}).get('enable', False):
+            text = params.get('text', {}).get('text', ' ')
+            for txt in text.split('\n'):
+                position = (
+                    random.randint(*params.get('text', {}).get('position_x_range', (0, 0))),
+                    random.randint(*params.get('text', {}).get('position_y_range', (0, 0)))
+                )
+                font = params.get('text', {}).get('position_x_range', cv2.FONT_HERSHEY_SIMPLEX)
+                scale = random.randint(*params.get('text', {}).get('font_scale_range', (10, 10))) / 10
+                color_tmp = params.get('text', {}).get('color_range',
+                                                       ((255, 255), (255, 255), (255, 255)))
+                color = (
+                    random.randint(*color_tmp[0]),
+                    random.randint(*color_tmp[1]),
+                    random.randint(*color_tmp[2])
+                )
+                thick = random.randint(*params.get('text', {}).get('thickness_range', (1, 1)))
+                blur = params.get('text', {}).get('enable_blur', False)
+                power_tmp = params.get('text', {}).get('blur_range', ((3, 37), (3, 37)))
+                power = (
+                    random.randint(*power_tmp[0]),
+                    random.randint(*power_tmp[1])
+                )
+                angle = random.randint(*params.get('text', {}).get('angle_range', (-15, 15)))
 
-            img.add_text_to_image(txt, position, scale, color, thick, blur, power, angle)
+                img.add_text_to_image(txt, position, scale, color, thick, blur, power, angle)
     return img
 
 
