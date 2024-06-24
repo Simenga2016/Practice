@@ -1,19 +1,20 @@
 def Digital_root(num):
     num = int(num)
-    if num < 0 :
+    if num < 0:
         raise Exception('Only positive integers')
     while num > 9:
         tmp = [int(x) for x in str(num)]
         num = sum(tmp)
     return num
 
+
 def score(dice):
     score = 0
     counter = [0] * 7
     for i in dice:
-        counter[i]+=1
+        counter[i] += 1
     print(counter)
-    points3 = [0,1000,200,300,400,500,600]
+    points3 = [0, 1000, 200, 300, 400, 500, 600]
     for i in range(len(counter)):
         if counter[i] >= 3:
             counter[i] -= 3
@@ -79,19 +80,21 @@ def next_bigger(n):
         return -1
     result = int(''.join(digits))
 
-
     return result
 
-def minor(sqarr,i,j):
-    return [row[:j] + row[j+1:] for row in (sqarr[:i]+sqarr[i+1:])]
+
+def minor(sqarr, i, j):
+    return [row[:j] + row[j + 1:] for row in (sqarr[:i] + sqarr[i + 1:])]
+
 
 def determinant(sqarr):
-    if len(sqarr) == 1: # Базовый случай
+    if len(sqarr) == 1:  # Базовый случай
         return sqarr[0][0]
     det = 0
     for i in range(len(sqarr)):
-        det += ((-1)**i) * sqarr[0][i] * determinant(minor(sqarr,0,i)) # Считаем по определению из задачи
+        det += ((-1) ** i) * sqarr[0][i] * determinant(minor(sqarr, 0, i))  # Считаем по определению из задачи
     return det
+
 
 class EvenOrOdd:
     def __call__(self, num):
@@ -99,6 +102,7 @@ class EvenOrOdd:
 
     def __getitem__(self, index):
         return 'Odd' if index % 2 else 'Even'
+
 
 class PaginationHelper:
     def __init__(self, info, num):
@@ -123,14 +127,16 @@ class PaginationHelper:
             return -1
         return item_index // self.num
 
+
 def rgb(r, g, b):
     return f"{max(0, min(255, r)):02X}{max(0, min(255, g)):02X}{max(0, min(255, b)):02X}"
+
 
 def make_readable(seconds):
     secs = seconds % 60
     time = seconds // 60
     mins = time % 60
-    hours = time //60
+    hours = time // 60
     return f'{hours:02d}:{mins:02d}:{secs:02d}'
 
 
@@ -153,13 +159,14 @@ def pig_latin(sentence):
 
     return ''.join(result)
 
+
 def generate_hashtag(s):
     if not s:
         return False
     res = '#'
     for char in s.title():
         if char.isalpha():
-            res+=char
+            res += char
     if len(res) > 140:
         return False
     return res
@@ -186,6 +193,7 @@ def product_fib(_prod):
         return [fib[-2], fib[-1], True]
     return [fib[-2], fib[-1], False]
 
+
 def perimeter(n):
     # ## В лоб - слишком медленно, порядка 10с
     # fib = [0, 1]
@@ -207,6 +215,7 @@ def perimeter(n):
 
     return 4 * fib_sum
 
+
 def sum_pairs(ints, s):
     seen = {}
     for index, number in enumerate(ints):
@@ -216,30 +225,49 @@ def sum_pairs(ints, s):
         seen[number] = index
     return None
 
+
 def validate_password(password):
     import re
     pattern = r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$'
-    if re.match(pattern,password):
+    if re.match(pattern, password):
         return True
     return False
 
-def ip_count(start,end):
+
+def ip_count(start, end):
     res = 0
     first = list(map(int, start.split('.')))
     second = list(map(int, end.split('.')))
     for i in range(len(first)):
-        res +=(second[i]-first[i]) * 256 ** (3-i)
+        res += (second[i] - first[i]) * 256 ** (3 - i)
     return res
+
 
 def sequre(password):
     import re
     pattern = r'^[A-Za-z\d]{1,}$'
-    if re.match(pattern,password):
+    if re.match(pattern, password):
         return True
     return False
 
+
 def int32_to_ip(int32):
-    return f'{(int32 >> 24) & 0xFF}.{(int32 >> 16) & 0xFF}.{(int32 >> 8) & 0xFF}.{int32 & 0xFF}' #Ez!
+    return f'{(int32 >> 24) & 0xFF}.{(int32 >> 16) & 0xFF}.{(int32 >> 8) & 0xFF}.{int32 & 0xFF}'  # Ez!
+
+
+cache = [0, 1]
+
+
+def fibonacci(n):
+    def fib_helper(n):
+        if n < len(cache):
+            return cache[n]
+        result = fib_helper(n - 1) + fib_helper(n - 2)
+        cache.append(result)
+        return result
+
+    return fib_helper(n)
+
 
 if __name__ == '__main__':
-    print(int32_to_ip(2149583361))
+    print(fibonacci(994))
