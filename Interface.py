@@ -8,9 +8,13 @@ def convert_data_to_random_params(data):
     :param data: Набор специфических данных, полученных из функции on_button_clicked описанной ниже.
     :return: Словарь формата класса Images.random_params.
     """
+    try:
+        multy = int(data['multy'])
+    except:
+        multy = 1
 
     random_params = {
-        'multiplicator': int(data['multy']),
+        'multiplicator': multy,
         'path_in' : data['directory_in'],
         'path_out': data['directory_out'],
         'blur': {
@@ -23,29 +27,28 @@ def convert_data_to_random_params(data):
             'range': data['sliders'][2]
         },
         'flip': {
-            'enable': data['checkboxes'][3],
+            'enable': any(data['check_buttons']),
             'flip_code': (
                 -1 if data['check_buttons'][0] else None,
                 0 if data['check_buttons'][1] else None,
                 1 if data['check_buttons'][2] else None,
-                None if not any(data['check_buttons']) else 0
             )
         },
         'saturation': {
-            'enable': data['checkboxes'][4],
+            'enable': data['checkboxes'][3],
             'range': data['sliders'][3]
         },
         'noise': {
-            'enable': data['checkboxes'][5] or data['checkboxes'][6],
+            'enable': data['checkboxes'][4] or data['checkboxes'][5],
             'mean_range': data['sliders'][4],
             'variance_range': data['sliders'][5]
         },
         'contrast': {
-            'enable': data['checkboxes'][7],
+            'enable': data['checkboxes'][6],
             'range': data['sliders'][6]
         },
         'crop': {
-            'enable': any(data['checkboxes'][8:12]),
+            'enable': any(data['checkboxes'][7:11]),
             'random': False,
             'left': data['sliders'][7],
             'top': data['sliders'][8],
@@ -53,17 +56,17 @@ def convert_data_to_random_params(data):
             'window_height': data['sliders'][10]
         },
         'resize': {
-            'enable': any(data['checkboxes'][12:14]),
+            'enable': any(data['checkboxes'][11:13]),
             'width_range': data['sliders'][11],
             'height_range': data['sliders'][12]
         },
         'rotate': {
-            'enable': data['checkboxes'][14],
+            'enable': data['checkboxes'][13],
             'angle_range': data['sliders'][13]
         },
         'text': {
-            'enable': any(data['checkboxes'][15:]),
-            'text': 'Hello, world!',
+            'enable': any(data['checkboxes'][14:]),
+            'text': data['text'],
             'position_x_range': data['sliders'][14],
             'position_y_range': data['sliders'][15],
             'font_scale_range': data['sliders'][16],
@@ -78,19 +81,20 @@ def convert_data_to_random_params(data):
 
 def create_gui(num = None):
     """
+    Создаёт графический интерфейс
 
     :param num: Номер папки вывода - необходимо для многократного использования интерфейса, для отсутствия
-     перезаписи изображений.
+     перезаписи изображений при отсутствии изменения папки ввода.
     :return: None
     """
 
-    global sliders, checkboxes, check_buttons, text_dir_in_box, text_dir_out_box, button, text_multy_box
+    global sliders, checkboxes, check_buttons, text_dir_in_box, text_dir_out_box, button, text_multy_box, text_in_box
 
-    # Создаем слайдеры RangeSlider
-    sliders = []
+
+    sliders = []     # Список слайдеров RangeSlider
     checkboxes = []  # Список для хранения всех чек-боксов
 
-    names = [
+    names = [ # Названия для всех слайдеров
         'Blur power x',
         'Blur power y',
         'Brightness',
@@ -116,7 +120,7 @@ def create_gui(num = None):
         'Text blur power y',
     ]
 
-    vals = [
+    vals = [ # Интервал для всех слайдеров
         (0, 25),  # 'Blur power x',
         (0, 25),  # 'Blur power y',
         (50, 200),  # 'Brightness',
@@ -142,7 +146,7 @@ def create_gui(num = None):
         (0, 25),  # 'Text blur power y',
     ]
 
-    start = [
+    start = [ # Начальные значения слайдеров
         (5, 10),  # 'Blur power x',
         (5, 10),  # 'Blur power y',
         (75, 150),  # 'Brightness',
@@ -170,6 +174,7 @@ def create_gui(num = None):
 
     # Создаем слайдеры и чек-боксы
     for i in range(len(names)):
+        # Создаём слайдеры и подписываем их
         ax_slider = plt.axes([0.1, 0.9 - i * 0.03, 0.55, 0.03])
         slider = RangeSlider(ax_slider, names[i], *vals[i], valinit=start[i], valstep=1)
         sliders.append(slider)
@@ -179,8 +184,8 @@ def create_gui(num = None):
         checkbox = CheckButtons(ax_checkbox, [''], actives=[False])  # Пустой чек-бокс
         checkboxes.append(checkbox)
 
-    # Создаем CheckButtons
-    check_ax = plt.axes([0.8, 0.6, 0.1, 0.1])
+    # Создаем CheckButtons для вариантов отзеркаливания
+    check_ax = plt.axes([0.8, 0.3, 0.1, 0.1])
     check_labels = ['Horizontal flip', 'No flip', 'Vertical flip']
     check_buttons = CheckButtons(check_ax, check_labels, actives=[True, True, True])
 
@@ -195,6 +200,10 @@ def create_gui(num = None):
     # Создаем TextBox для ввода количества изображений
     text_multy_ax = plt.axes([0.85, 0.7, 0.1, 0.05])
     text_multy_box = TextBox(text_multy_ax, 'Multy', initial='1')
+
+    # Создаем TextBox для ввода текста
+    text_in_ax = plt.axes([0.85, 0.6, 0.1, 0.05])
+    text_in_box = TextBox(text_in_ax, 'Text', initial='Hello world!')
 
     # Создаем кнопку "Принять"
     button_ax = plt.axes([0.8, 0.1, 0.1, 0.05])
@@ -237,7 +246,8 @@ def on_button_clicked(event = None):
         'check_buttons': check_states,
         'directory_in': dir_in_value,
         'directory_out': dir_out_value,
-        'multy' : multy
+        'multy' : multy,
+        'text' : text_in_box,
     }
 
     # Выводим словарь с данными
