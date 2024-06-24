@@ -71,9 +71,8 @@ def convert_data_to_random_params(data):
             'position_y_range': data['sliders'][15],
             'font_scale_range': data['sliders'][16],
             'color_range': (data['sliders'][18], data['sliders'][19], data['sliders'][20]),
-            'thickness_range': data['sliders'][21],
             'enable_blur': data['checkboxes'][17],
-            'blur_range': data['sliders'][22],
+            'blur_range': (data['sliders'][21],data['sliders'][22]),
             'angle_range': data['sliders'][17]
         }
     }
@@ -247,7 +246,7 @@ def on_button_clicked(event = None):
         'directory_in': dir_in_value,
         'directory_out': dir_out_value,
         'multy' : multy,
-        'text' : text_in_box,
+        'text' : text_in_box.text,
     }
 
     # Выводим словарь с данными
@@ -261,4 +260,6 @@ def on_button_clicked(event = None):
     plt.close()
     return random_params
 
-# create_gui()
+
+if __name__ == '__main__':
+    create_gui()
