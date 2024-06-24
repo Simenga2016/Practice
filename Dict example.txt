@@ -1,0 +1,59 @@
+random_params = {
+            'multiplicator': 1,
+            'blur': {
+                'enable': False,
+                'power_x': (5, 16),
+                'power_y': (5, 16)
+            },
+            'brightness': {
+                'enable': False,
+                'range': (50, 200)
+            },
+            'flip': {
+                'enable': False,
+                'flip_code': (-1, 0, 1)  ###
+            },
+            'saturation': {
+                'enable': False,
+                'range': (50, 200)
+            },
+            'noise': {
+                'enable': False,
+                'mean_range': (4, 16),
+                'variance_range': (4, 32)
+            },
+            'contrast': {
+                'enable': False,
+                'range': (50, 200)
+            },
+            'crop': {
+                'enable': False,
+                'random': False,
+                'left': (0, 256),
+                'top': (0, 256),
+                'window_width': (64, 256),
+                'window_height': (64, 256)
+            },
+            'resize': {
+                'enable': False,
+                'width_range': (512, 1024),
+                'height_range': (512, 1024)
+            },
+            'rotate': {
+                'enable': False,
+                'angle_range': (-10, 10)
+            },
+            'text': {
+                'enable': False,
+                'text': 'Hello, world!',
+                'position_x_range': (0, 512),
+                'position_y_range': (0, 512),
+                'font': cv2.FONT_HERSHEY_SIMPLEX,
+                'font_scale_range': (3, 30),
+                'color_range': ((0, 255), (0, 255), (0, 255)),
+                'thickness_range': (1, 3),  ###
+                'enable_blur': False,
+                'blur_range': ((3, 37), (3, 37)),  ###
+                'angle_range': (-10, 10)
+            }
+        }

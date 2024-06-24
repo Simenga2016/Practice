@@ -10,19 +10,22 @@ import multiprocessing
 
 def augment_one_s(task):
     """
-    Обработка изображения согласно параметрам. Вынесена из классов для корректной работы с потоками.
+    Обработка изображения согласно параметрам.
 
-    :param task: Изображение класса Image и параметры аугментации
+     Вынесена из классов для корректной работы с потоками. Функционально копия Images.augment_one
+
+    :param task: Изображение класса Image и параметры аугментации в формате словаря.
     :return: Обработанное изображение
     """
     img, params = task
-    if img.image is not None and img.image.size > 0:
-        if params.get('blur', {}).get('enable', False):
-            power_x = random.randint(*params.get('blur', {}).get('power_x', (11, 11)))
-            power_y = random.randint(*params.get('blur', {}).get('power_y', (11, 11)))
-            power_y += 1 if power_y % 2 == 0 else 0
-            power_x += 1 if power_x % 2 == 0 else 0
-            img.blur_image(power_x, power_y)
+    if img.image is not None and img.image.size > 0:  # Проверка полученного изображения
+        if params.get('blur', {}).get('enable', False):  # Получить из параметров, необходимо ли размывать.
+            power_x = random.randint(*params.get('blur', {}).get('power_x', (11, 11)))  # Сила размытия по оси X
+            power_y = random.randint(*params.get('blur', {}).get('power_y', (11, 11)))  # Сила размытия по оси Y
+
+            img.blur_image(power_x, power_y)  # Размыть изображение
+
+        # Дальнейшие проверки и действия составлены по аналогии
 
         if params.get('brightness', {}).get('enable', False):
             brightness = random.randint(
@@ -30,7 +33,7 @@ def augment_one_s(task):
             img.change_brightness(brightness)
 
         if params.get('flip', {}).get('enable', False):
-            flip = random.choice(params.get('flip', {}).get('flip_code', 0))
+            flip = random.choice([x for x in params.get('flip', {}).get('flip_code', [0, ]) if x is not None])
             if flip == -1:
                 img.flip_horizontal()
             elif flip == 1:
@@ -109,6 +112,7 @@ class Image:
     def open_image(self, input_path):
         """
         Открывает изображение с помощью OpenCV или PIL, в зависимости от расширения файла.
+
         :param input_path: Путь к входному изображению.
         :return: Открытое изображение (numpy array).
         """
@@ -143,6 +147,7 @@ class Image:
     def save_image(self, output_path):
         """
         Сохраняет изображение с помощью OpenCV.
+
         :param output_path: Путь для сохранения изображения.
         """
         try:
@@ -154,6 +159,7 @@ class Image:
     def rotate_image(self, angle):
         """
         Поворачивает изображение на заданный угол.
+
         :param angle: Угол поворота в градусах.
         :return: Повернутое изображение.
         """
@@ -169,6 +175,7 @@ class Image:
     def flip_vertical(self):
         """
         Отражает изображение по вертикали.
+
         :return: Отраженное изображение.
         """
         try:
@@ -179,6 +186,7 @@ class Image:
     def flip_horizontal(self):
         """
         Отражает изображение по горизонтали.
+
         :return: Отраженное изображение.
         """
         try:
@@ -244,11 +252,13 @@ class Image:
         """
 
         try:
+            power_y += 1 if power_y % 2 == 0 else 0  # Исправление на нечётность - необходима для метода размытия.
+            power_x += 1 if power_x % 2 == 0 else 0  # Исправление на нечётность - необходима для метода размытия.
             power = (power_x, power_y)
             if not (isinstance(power, tuple) and len(power) == 2 and all(isinstance(x, int) for x in power)):
                 raise ValueError("Параметр 'power' должен быть кортежем из двух целых чисел.")
-            if not (all(x > 0 and x % 2 == 1 for x in power)):
-                raise ValueError("Значения в параметре 'power' должны быть нечетными и больше нуля.")
+            if not (all(x > 0 for x in power)):  # Проверка на отрицательность
+                raise ValueError("Значения в параметре 'power' должны быть больше нуля.")
             self.image = cv2.GaussianBlur(self.image, power, 0)
         except Exception as e:
             raise Exception(f'Ошибка размытия: {e}')
@@ -278,6 +288,7 @@ class Image:
                           blur=False, blur_power=(11, 11), angle=0, font=cv2.FONT_HERSHEY_SIMPLEX):
         """
         Добавляет текст на изображение с возможностью размыть текст, задать угол поворота и размер шрифта.
+
         :param text: Текст для добавления.
         :param position: Позиция текста (кортеж (x, y)).
         :param font: Шрифт текста.
@@ -383,22 +394,23 @@ class Image:
             # raise Exception(f'Ошибка визуализации: {e}')
             print(f'Ошибка визуализации: {e}')
 
-    def augment1(self, functions):
-        """
-        Применяет набор функций к изображению для его аугментации.
-
-        :param functions: Список кортежей (функция, аргументы) для применения к изображению.
-        """
-        for func, args in functions:
-            try:
-                func(*args)
-            except Exception as e:
-                # raise Exception(f'Ошибка применения функции {func.__name__}: {e}')
-                print(f'Ошибка применения функции {func.__name__}: {e}')
+    # def augment1(self, functions):
+    #     """
+    #     Применяет набор функций к изображению для его аугментации.
+    #
+    #     :param functions: Список кортежей (функция, аргументы) для применения к изображению.
+    #     """
+    #     for func, args in functions:
+    #         try:
+    #             func(*args)
+    #         except Exception as e:
+    #             # raise Exception(f'Ошибка применения функции {func.__name__}: {e}')
+    #             print(f'Ошибка применения функции {func.__name__}: {e}')
 
     def augment(self, functions):
         """
         Применяет набор функций к изображению для его аугментации.
+
         :param functions: Список кортежей (имя функции, аргументы) для применения к изображению.
         """
         for func_name, args in functions:
@@ -409,27 +421,6 @@ class Image:
             except Exception as e:
                 # raise Exception(f'Ошибка применения функции {func_name}: {e}')
                 print(f'Ошибка применения функции {func_name}: {e}')
-
-    def multy_augment(self, process_functions_list):
-        """
-        Применяет наборы функций к изображению параллельно на копиях объекта класса.
-        Всё ещё не работает //18.06.2024 -> Переписать в отдельный общий класс нескольких изображений?
-        :param process_functions_list: Список списков кортежей (функция, аргументы) для применения к изображению.
-        """
-        #
-        # def process_copy(process_functions, input_image):
-        #     img_copy = input_image.copy()
-        #     img_copy.augment(process_functions)
-        #     return img_copy
-
-        res = []
-        for funcs in process_functions_list:
-            coppied = self.copy()  # Создаем копию оригинального изображения для каждой операции
-            print(coppied)
-            coppied.augment(funcs)
-            res.append(coppied)
-
-        return res
 
 
 class Images:
@@ -508,6 +499,7 @@ class Images:
     def open_image(self, path):
         """
         Открыть изображение по пути как объект класса Image
+
         :param path: Путь к изображению.
         :return: Возвращает единицу в случае успеха.
         """
@@ -535,6 +527,7 @@ class Images:
     def open_folder(self, path='.'):
         """
         Открывает все изображения в папке как объекты класса Image.
+
         :param path: Путь к папке.
         :return: Возвращает единицу в случае успеха.
         """
