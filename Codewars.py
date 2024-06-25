@@ -269,5 +269,65 @@ def fibonacci(n):
     return fib_helper(n)
 
 
+def add(x):
+    def inner_sum(y=None):
+        nonlocal x
+        if y is None:
+            return x
+        x += y
+        return inner_sum
+
+    return inner_sum
+
+class User:
+    def __init__(self):
+        self.rank = -8
+        self.progress = 0
+
+    def upgrade(self):
+        while self.progress >= 100 and self.rank < 8:
+            self.progress -= 100
+            self.rank += 1
+            if self.rank == 0:
+                self.rank += 1
+        if self.rank == 8:
+            self.progress = 0
+    def inc_progress(self, rank):
+        if rank > 8 or rank < -8 or rank == 0:
+            raise Exception("Invalid rank")
+        # Calculate the effective rank difference, considering the absence of rank 0
+        effective_rank = rank
+        effective_self_rank = self.rank
+
+        if effective_rank > 0 and self.rank < 0:
+            effective_rank -= 1
+        elif effective_rank < 0 and self.rank > 0:
+            effective_self_rank -= 1
+
+        if effective_self_rank > effective_rank + 1:
+            return  # No progress if the rank difference is more than one in the negative direction
+
+        if effective_self_rank == effective_rank + 1:
+            self.progress += 1
+        elif effective_self_rank == effective_rank:
+            self.progress += 3
+        else:
+            self.progress += 10 * (effective_rank - effective_self_rank) ** 2
+
+        self.upgrade()
+
+    def rank(self):
+        return self.rank
+
+    def progress(self):
+        return self.progress
+
 if __name__ == '__main__':
-    print(fibonacci(994))
+    user = User()
+    print(user.rank)
+    print(user.progress)
+    user.inc_progress(8)
+    user.inc_progress(8)
+    user.inc_progress(8)
+    print(user.rank)
+    print(user.progress)
