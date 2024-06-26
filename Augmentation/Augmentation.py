@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image as PILImage
 import random
-import copy
+from copy import deepcopy
 import os
 import multiprocessing
 
@@ -77,7 +77,6 @@ def augment_one_s(task):
                     random.randint(*params.get('text', {}).get('position_x_range', (0, 0))),
                     random.randint(*params.get('text', {}).get('position_y_range', (0, 0)))
                 )
-                font = params.get('text', {}).get('position_x_range', cv2.FONT_HERSHEY_SIMPLEX)
                 scale = random.randint(*params.get('text', {}).get('font_scale_range', (10, 10))) / 10
                 color_tmp = params.get('text', {}).get('color_range',
                                                        ((255, 255), (255, 255), (255, 255)))
@@ -142,7 +141,7 @@ class Image:
         :return: Копия изображения.
         """
         # return Image(image = (self.image)[:])
-        return copy.deepcopy(self)
+        return deepcopy(self)
 
     def save_image(self, output_path):
         """
@@ -305,7 +304,11 @@ class Image:
             cv2.putText(mask, text, position, font, font_scale, color, thickness, lineType=cv2.LINE_AA)
 
             if blur:
-                mask = cv2.GaussianBlur(mask, blur_power[0], blur_power[1], 0)
+                bp1 = blur_power[0]
+                bp2 = blur_power[1]
+                bp1 += 1 if blur_power[0] % 2 == 0 else 0
+                bp2 += 1 if blur_power[1] % 2 == 0 else 0
+                mask = cv2.GaussianBlur(mask, (bp1, bp2), 0)
             if angle != 0:
                 (h, w) = mask.shape[:2]
                 center = (w // 2, h // 2)

@@ -201,7 +201,7 @@ def create_gui(num = None):
     text_multy_box = TextBox(text_multy_ax, 'Multy', initial='1')
 
     # Создаем TextBox для ввода текста
-    text_in_ax = plt.axes([0.85, 0.6, 0.1, 0.05])
+    text_in_ax = plt.axes([0.8, 0.6, 0.19, 0.05])
     text_in_box = TextBox(text_in_ax, 'Text', initial='Hello world!')
 
     # Создаем кнопку "Принять"
@@ -249,12 +249,8 @@ def on_button_clicked(event = None):
         'text' : text_in_box.text,
     }
 
-    # Выводим словарь с данными
-    # print("Data dictionary:", data_dict)
-
     # Преобразуем данные в случайные параметры и выводим результат
     random_params = convert_data_to_random_params(data_dict)
-    # print("Random parameters:", random_params)
 
     # Закрываем окно matplotlib
     plt.close()

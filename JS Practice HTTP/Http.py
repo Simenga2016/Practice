@@ -12,4 +12,4 @@ reqs = [
 
 for _ in reqs:
     r = requests.get(_)
-    print(r.status_code)
+    print('Response: ',r.status_code)
