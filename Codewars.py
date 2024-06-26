@@ -322,12 +322,43 @@ class User:
     def progress(self):
         return self.progress
 
+
+def count_calls(func, *args, **kwargs):
+    import sys
+    call_count = -1
+
+    def trace_calls(frame, event, arg):
+        nonlocal call_count
+        if event == 'call':
+            call_count += 1
+        return trace_calls
+    sys.settrace(trace_calls)
+    func(*args, **kwargs)
+    sys.settrace(None)
+
+    return call_count
+
+
+def beeramid(bonus,price):
+    count = bonus // price
+    i = 0
+    while count>0:
+        count-= i**2
+        print(count)
+        i += 1
+    if count<0:
+        i-=1
+    i-=1
+    return i if i >= 0 else 0
+
+
+def mean(array_a,array_b):
+    num = 0
+    denum = 0
+    for _ in range(len(array_a)):
+        num += (array_a[_]-array_b[_])**2
+        denum +=1
+    return num/denum
+
 if __name__ == '__main__':
-    user = User()
-    print(user.rank)
-    print(user.progress)
-    user.inc_progress(8)
-    user.inc_progress(8)
-    user.inc_progress(8)
-    print(user.rank)
-    print(user.progress)
+    print(mean([10, 20, 10, 2], [10, 25, 5, -2]))
