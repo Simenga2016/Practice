@@ -360,5 +360,10 @@ def mean(array_a,array_b):
         denum +=1
     return num/denum
 
+
+def pascal_to_snake_case(s):
+    from re import sub
+    return sub(r'(?<!^)(?=[A-Z])', '_', s).lower()
+
 if __name__ == '__main__':
-    print(mean([10, 20, 10, 2], [10, 25, 5, -2]))
+    print(pascal_to_snake_case('Apple12ImaxPro'))
