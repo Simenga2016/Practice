@@ -3,7 +3,7 @@ import time
 import Augmentation
 import Interface
 import os
-
+from logger import logger
 
 def gui_work():
     """
@@ -25,20 +25,18 @@ def gui_work():
         Img_Processor.clear()
         return True
     except KeyboardInterrupt:
-        print('Прервано пользователем')
+        logger.info('Прервано пользователем')
         return False
 
     except Exception as e:
-        print('Ошибка в ходе выполнения:', e, "\n\nПопробуйте ещё раз\n\n")
+        logger.error('Ошибка в ходе выполнения:', e, "\n\nПопробуйте ещё раз\n\n")
         gui_work()
 
 
 
 #ToDo
 """
-- Логирование
-- Дополнительные тесты
-- Презентация + Кодварс + Модули-тесты
+- unit-тесты
 """
 
 if __name__ == "__main__":

@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 from matplotlib.widgets import RangeSlider, CheckButtons, TextBox, Button
+from logger import logger
 
 def convert_data_to_random_params(data):
     """
@@ -210,6 +211,8 @@ def create_gui(num = None):
 
     button.on_clicked(on_button_clicked)
 
+    logger.info(f'Интерфейс успешно создан!')
+
     plt.show()
 
 def on_button_clicked(event = None):
@@ -254,6 +257,7 @@ def on_button_clicked(event = None):
 
     # Закрываем окно matplotlib
     plt.close()
+    logger.info('Параметры сохранены')
     return random_params
 
 

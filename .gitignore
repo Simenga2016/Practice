@@ -1,10 +1,7 @@
-
-/output
-/path_to_output_directory1
-/path_to_output_directory
-/Augmentation/out
-/Augmentation/output
-/Augmentation/output
+*.jpg
 *.jpeg
-/Augmentation/__pycache__
-/Augmentation/__pycache__
+*.png
+*.gif
+*.bmp
+!Augmentation/test/**
+!Augmentation/test/*.*
