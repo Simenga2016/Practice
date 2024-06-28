@@ -33,11 +33,5 @@ def gui_work():
         gui_work()
 
 
-
-#ToDo
-"""
-- unit-тесты
-"""
-
 if __name__ == "__main__":
     gui_work()

@@ -2071,3 +2071,92 @@ cv-python\opencv\modules\imgproc\src\imgwarp.cpp:2825: error: (-215:Assertion fa
 2024-06-28 14:10:36 - logger - INFO - Изображение ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg успешно обработано
 2024-06-28 14:10:36 - logger - INFO - Папка ./output успешно очищена!
 2024-06-28 14:10:37 - logger - INFO - Изображения успешно сохранены в папку ./output/out
+2024-06-28 14:27:35 - logger - INFO - Интерфейс успешно создан!
+2024-06-28 14:54:31 - logger - INFO - Прервано пользователем
+2024-06-28 14:56:16 - logger - INFO - Интерфейс успешно создан!
+2024-06-28 14:56:25 - logger - INFO - Параметры сохранены
+2024-06-28 14:56:25 - logger - INFO - Параметры сохранены
+2024-06-28 14:56:25 - logger - INFO - File ./input/Changeling_masked.jpg opened successfully
+2024-06-28 14:56:26 - logger - INFO - File ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png opened successfully
+2024-06-28 14:56:26 - logger - INFO - File ./input/nvidia-logo.png opened successfully
+2024-06-28 14:56:26 - logger - INFO - File ./input/Phoenix.jpg opened successfully
+2024-06-28 14:56:26 - logger - INFO - File ./input/risovach.ru (5).jpg opened successfully
+2024-06-28 14:56:26 - logger - INFO - File ./input/test.bmp opened successfully
+2024-06-28 14:56:26 - logger - ERROR - Не удалось открыть изображение по пути: ./input/test.gif
+2024-06-28 14:56:26 - logger - INFO - File ./input/test.gif opened successfully
+2024-06-28 14:56:26 - logger - INFO - File ./input/Why.jpg opened successfully
+2024-06-28 14:56:26 - logger - INFO - File ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg opened successfully
+2024-06-28 14:56:26 - logger - INFO - File ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg opened successfully
+2024-06-28 14:56:26 - logger - INFO - File ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg opened successfully
+2024-06-28 14:56:26 - logger - INFO - Папка ./input/ успешно открыта
+2024-06-28 14:56:27 - logger - INFO - Изображение ./input/Changeling_masked.jpg успешно обработано
+2024-06-28 14:56:27 - logger - INFO - Изображение ./input/nvidia-logo.png успешно обработано
+2024-06-28 14:56:27 - logger - INFO - Изображение ./input/test.bmp успешно обработано
+2024-06-28 14:56:27 - logger - INFO - Изображение ./input/test.gif успешно обработано
+2024-06-28 14:56:27 - logger - INFO - Изображение ./input/risovach.ru (5).jpg успешно обработано
+2024-06-28 14:56:27 - logger - INFO - Изображение ./input/Why.jpg успешно обработано
+2024-06-28 14:56:27 - logger - INFO - Изображение ./input/Phoenix.jpg успешно обработано
+2024-06-28 14:56:27 - logger - INFO - Изображение ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg успешно обработано
+2024-06-28 14:56:27 - logger - INFO - Изображение ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg успешно обработано
+2024-06-28 14:56:27 - logger - INFO - Изображение ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg успешно обработано
+2024-06-28 14:56:27 - logger - INFO - Изображение ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png успешно обработано
+2024-06-28 14:56:27 - logger - INFO - Папка ./output успешно очищена!
+2024-06-28 14:56:27 - logger - INFO - Изображения успешно сохранены в папку ./output/out
+2024-06-28 15:09:56 - logger - INFO - Интерфейс успешно создан!
+2024-06-28 15:09:58 - logger - INFO - Параметры сохранены
+2024-06-28 15:09:58 - logger - INFO - Параметры сохранены
+2024-06-28 15:09:58 - logger - INFO - File ./input/Changeling_masked.jpg opened successfully
+2024-06-28 15:09:58 - logger - INFO - File ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png opened successfully
+2024-06-28 15:09:58 - logger - INFO - File ./input/nvidia-logo.png opened successfully
+2024-06-28 15:09:58 - logger - INFO - File ./input/Phoenix.jpg opened successfully
+2024-06-28 15:09:58 - logger - INFO - File ./input/risovach.ru (5).jpg opened successfully
+2024-06-28 15:09:58 - logger - INFO - File ./input/test.bmp opened successfully
+2024-06-28 15:09:58 - logger - ERROR - Не удалось открыть изображение по пути: ./input/test.gif
+2024-06-28 15:09:58 - logger - INFO - File ./input/test.gif opened successfully
+2024-06-28 15:09:58 - logger - INFO - File ./input/Why.jpg opened successfully
+2024-06-28 15:09:58 - logger - INFO - File ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg opened successfully
+2024-06-28 15:09:58 - logger - INFO - File ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg opened successfully
+2024-06-28 15:09:58 - logger - INFO - File ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg opened successfully
+2024-06-28 15:09:58 - logger - INFO - Папка ./input/ успешно открыта
+2024-06-28 15:09:59 - logger - INFO - Изображение ./input/Changeling_masked.jpg успешно обработано
+2024-06-28 15:09:59 - logger - INFO - Изображение ./input/risovach.ru (5).jpg успешно обработано
+2024-06-28 15:09:59 - logger - INFO - Изображение ./input/Phoenix.jpg успешно обработано
+2024-06-28 15:09:59 - logger - INFO - Изображение ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png успешно обработано
+2024-06-28 15:09:59 - logger - INFO - Изображение ./input/test.bmp успешно обработано
+2024-06-28 15:09:59 - logger - INFO - Изображение ./input/test.gif успешно обработано
+2024-06-28 15:09:59 - logger - INFO - Изображение ./input/Why.jpg успешно обработано
+2024-06-28 15:09:59 - logger - INFO - Изображение ./input/nvidia-logo.png успешно обработано
+2024-06-28 15:09:59 - logger - INFO - Изображение ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg успешно обработано
+2024-06-28 15:09:59 - logger - INFO - Изображение ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg успешно обработано
+2024-06-28 15:09:59 - logger - INFO - Изображение ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg успешно обработано
+2024-06-28 15:09:59 - logger - INFO - Папка ./output успешно очищена!
+2024-06-28 15:09:59 - logger - INFO - Изображения успешно сохранены в папку ./output/out
+2024-06-28 15:12:19 - logger - INFO - Интерфейс успешно создан!
+2024-06-28 15:12:21 - logger - INFO - Параметры сохранены
+2024-06-28 15:12:21 - logger - INFO - Параметры сохранены
+2024-06-28 15:12:21 - logger - INFO - File ./input/Changeling_masked.jpg opened successfully
+2024-06-28 15:12:21 - logger - INFO - File ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png opened successfully
+2024-06-28 15:12:21 - logger - INFO - File ./input/nvidia-logo.png opened successfully
+2024-06-28 15:12:21 - logger - INFO - File ./input/Phoenix.jpg opened successfully
+2024-06-28 15:12:21 - logger - INFO - File ./input/risovach.ru (5).jpg opened successfully
+2024-06-28 15:12:21 - logger - INFO - File ./input/test.bmp opened successfully
+2024-06-28 15:12:21 - logger - WARNING - Не удалось открыть изображение по пути: ./input/test.gif
+2024-06-28 15:12:21 - logger - INFO - File ./input/test.gif opened successfully
+2024-06-28 15:12:21 - logger - INFO - File ./input/Why.jpg opened successfully
+2024-06-28 15:12:21 - logger - INFO - File ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg opened successfully
+2024-06-28 15:12:21 - logger - INFO - File ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg opened successfully
+2024-06-28 15:12:21 - logger - INFO - File ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg opened successfully
+2024-06-28 15:12:21 - logger - INFO - Папка ./input/ успешно открыта
+2024-06-28 15:12:22 - logger - INFO - Изображение ./input/Changeling_masked.jpg успешно обработано
+2024-06-28 15:12:22 - logger - INFO - Изображение ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png успешно обработано
+2024-06-28 15:12:22 - logger - INFO - Изображение ./input/nvidia-logo.png успешно обработано
+2024-06-28 15:12:22 - logger - INFO - Изображение ./input/Phoenix.jpg успешно обработано
+2024-06-28 15:12:22 - logger - INFO - Изображение ./input/risovach.ru (5).jpg успешно обработано
+2024-06-28 15:12:22 - logger - INFO - Изображение ./input/test.bmp успешно обработано
+2024-06-28 15:12:22 - logger - INFO - Изображение ./input/Why.jpg успешно обработано
+2024-06-28 15:12:22 - logger - INFO - Изображение ./input/test.gif успешно обработано
+2024-06-28 15:12:22 - logger - INFO - Изображение ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg успешно обработано
+2024-06-28 15:12:22 - logger - INFO - Изображение ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg успешно обработано
+2024-06-28 15:12:22 - logger - INFO - Изображение ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg успешно обработано
+2024-06-28 15:12:22 - logger - INFO - Папка ./output успешно очищена!
+2024-06-28 15:12:22 - logger - INFO - Изображения успешно сохранены в папку ./output/out

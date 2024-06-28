@@ -31,7 +31,8 @@ class Image:
         try:
             image = cv2.imread(input_path)
             if image is None:
-                logger.error(f"Не удалось открыть изображение по пути: {input_path}")
+                logger.warning(f"Не удалось открыть изображение по пути: {input_path}")
+                raise Exception
             logger.info(f'File {input_path} opened successfully')
             return image
         except:

@@ -5,3 +5,4 @@
 *.bmp
 !Augmentation/test/**
 !Augmentation/test/*.*
+*.log
