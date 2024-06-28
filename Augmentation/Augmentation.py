@@ -7,103 +7,8 @@ from copy import deepcopy
 import os
 import multiprocessing
 from logger import logger
-
-
-def augment_one_s(task):
-    """
-    Обработка изображения согласно параметрам.
-
-     Вынесена из классов для корректной работы с потоками. Функционально копия Images.augment_one
-
-    :param task: Изображение класса Image и параметры аугментации в формате словаря.
-    :return: Обработанное изображение
-    """
-    try:
-        img, params = task
-        if img.image is not None and img.image.size > 0:  # Проверка полученного изображения
-            if params.get('blur', {}).get('enable', False):  # Получить из параметров, необходимо ли размывать.
-                power_x = random.randint(*params.get('blur', {}).get('power_x', (11, 11)))  # Сила размытия по оси X
-                power_y = random.randint(*params.get('blur', {}).get('power_y', (11, 11)))  # Сила размытия по оси Y
-
-                img.blur_image(power_x, power_y)  # Размыть изображение
-
-            # Дальнейшие проверки и действия составлены по аналогии
-
-            if params.get('brightness', {}).get('enable', False):
-                brightness = random.randint(
-                    *params.get('brightness', {}).get('range', (100, 100))) / 100
-                img.change_brightness(brightness)
-
-            if params.get('flip', {}).get('enable', False):
-                flip = random.choice([x for x in params.get('flip', {}).get('flip_code', [0, ]) if x is not None])
-                if flip == -1:
-                    img.flip_horizontal()
-                elif flip == 1:
-                    img.flip_vertical()
-
-            if params.get('saturation', {}).get('enable', False):
-                img.change_saturation(
-                    random.randint(*params.get('saturation', {}).get('range', (50, 50))) / 100)
-
-            if params.get('noise', {}).get('enable', False):
-                var = random.randint(*params.get('saturation', {}).get('variance_range', (4, 4)))
-                mean = random.randint(*params.get('saturation', {}).get('mean_range', (4, 4)))
-                img.add_noise(var, mean)
-
-            if params.get('contrast', {}).get('enable', False):
-                img.change_contrast(
-                    random.randint(*params.get('saturation', {}).get('range', (100, 100))) / 100)
-            if params.get('crop', {}).get('enable', False):
-                tmp_img = deepcopy(img)
-                tmp_counter = 0
-                while not (tmp_img is not None and tmp_img.image.size > 0):
-                    x = random.randint(*params.get('crop', {}).get('left', (0, 0)))
-                    y = random.randint(*params.get('crop', {}).get('top', (0, 0)))
-                    wid = random.randint(*params.get('crop', {}).get('window_width', (0, 0)))
-                    hei = random.randint(*params.get('crop', {}).get('window_height', (0, 0)))
-                    if params.get('crop', {}).get('random', False):
-                        tmp_img.random_crop_image(wid, hei, x, y)
-                    else:
-                        tmp_img.crop_image(x, y, wid, hei)
-                img = deepcopy(tmp_img)
-            if params.get('resize', {}).get('enable', False):
-                wid = random.randint(*params.get('resize', {}).get('width_range', (512, 512)))
-                hei = random.randint(*params.get('resize', {}).get('height_range', (512, 512)))
-                img.resize_image(wid, hei)
-
-            if params.get('rotate', {}).get('enable', False):
-                img.rotate_image(random.randint(*params.get('rotate', {}).get('angle_range', (0, 0))))
-
-            if params.get('text', {}).get('enable', False):
-                text = params.get('text', {}).get('text', ' ')
-                for txt in text.split('\n'):
-                    position = (
-                        random.randint(*params.get('text', {}).get('position_x_range', (0, 0))),
-                        random.randint(*params.get('text', {}).get('position_y_range', (0, 0)))
-                    )
-                    scale = random.randint(*params.get('text', {}).get('font_scale_range', (10, 10))) / 10
-                    color_tmp = params.get('text', {}).get('color_range',
-                                                           ((255, 255), (255, 255), (255, 255)))
-                    color = (
-                        random.randint(*color_tmp[0]),
-                        random.randint(*color_tmp[1]),
-                        random.randint(*color_tmp[2])
-                    )
-                    thick = random.randint(*params.get('text', {}).get('thickness_range', (1, 1)))
-                    blur = params.get('text', {}).get('enable_blur', False)
-                    power_tmp = params.get('text', {}).get('blur_range', ((3, 37), (3, 37)))
-                    power = (
-                        random.randint(*power_tmp[0]),
-                        random.randint(*power_tmp[1])
-                    )
-                    angle = random.randint(*params.get('text', {}).get('angle_range', (-15, 15)))
-
-                    img.add_text_to_image(txt, position, scale, color, thick, blur, power, angle)
-        logger.info(f'Изображение {img.path} успешно обработано')
-        return img
-    except Exception as e:
-        logger.error(f'Ошибка аугментации изображения {img.path} : {e}')
-
+from Augment import augment_one_s
+from  Random_augment import *
 
 class Image:
     def __init__(self, input_path=None, image=None):
@@ -165,7 +70,7 @@ class Image:
         try:
             if self.image is not None and self.image.size > 0:
                 cv2.imwrite(output_path, self.image)
-                logger.info(f'File {output_path} successfully saved')
+                logger.debug(f'File {output_path} successfully saved')
         except Exception as e:
             logger.error(f'Ошибка сохранения: {e} ')
 
@@ -493,6 +398,32 @@ class Images:
             }
         }
 
+    def clear_dir(self, path):
+        """
+        Удаляет все файлы с расширениями .jpg, .png, .bmp и .gif в указанной папке.
+
+        :param path: Путь к файлу или директории, из которой нужно удалить файлы.
+        """
+        try:
+            directory = os.path.dirname(path)
+            if not os.path.exists(directory):
+                logger.error(f'Путь {directory} не существует.')
+                return
+
+            if not os.path.isdir(directory):
+                logger.error(f'Путь {directory} не является директорией.')
+                return
+
+            for filename in os.listdir(directory):
+                if filename.endswith((".jpeg",".jpg", ".png", ".bmp", ".gif")):
+                    file_path = os.path.join(directory, filename)
+                    if os.path.isfile(file_path):
+                        os.remove(file_path)
+                        logger.debug(f'file {path} deleted')
+            logger.info(f'Папка {directory} успешно очищена!')
+        except Exception as e:
+            logger.error(f'Ошибка во время очищения папки {directory}: {e}')
+
     def open_image(self, path):
         """
         Открыть изображение по пути как объект класса Image
@@ -507,12 +438,21 @@ class Images:
             logger.error(f'Ошибка открытия изображения:{e}')
 
     def save_to(self, path=None, extension="jpeg"):
+        """
+        Сохраняет все изображения в папку, предварительно очистив её от изображений.
+
+        :param path: Путь к папке.
+        :param extension: Разрешение файлов.
+        :return: None
+        """
         try:
             self.path_out = path if path else self.path_out
+            self.clear_dir(path)
             counter = 0
             for img in self.images:
                 img.save_image(f'{self.path_out}{f"({counter})" if counter else ""}.{extension}')
                 counter += 1
+            logger.info(f'Изображения успешно сохранены в папку {path}')
         except Exception as e:
             logger.error(f'Ошибка массового сохранения {e}')
 
@@ -577,95 +517,20 @@ class Images:
         :return: Массив обработанных изображений.
         """
 
-        if isinstance(params, dict):
-            for key, value in params.items():
-                if key in self.random_params:
-                    if isinstance(value, dict):
-                        for sub_key, sub_value in value.items():
-                            if sub_key in self.random_params[key]:
-                                self.random_params[key][sub_key] = sub_value
-                    else:
-                        self.random_params[key] = value
-
-        self.multiple(self.random_params.get('multiplicator', 1))
+        update_parameters(self.random_params, params)
 
         for img in self.images:
-            if self.random_params.get('blur', {}).get('enable', False):
-                power_x = random.randint(*self.random_params.get('blur', {}).get('power_x', (11, 11)))
-                power_y = random.randint(*self.random_params.get('blur', {}).get('power_y', (11, 11)))
-                power_y += 1 if power_y % 2 == 0 else 0
-                power_x += 1 if power_x % 2 == 0 else 0
-                img.blur_image(power_x, power_y)
+            process_blur(img, self.random_params.get('blur', {}))
+            process_brightness(img, self.random_params.get('brightness', {}))
+            process_flip(img, self.random_params.get('flip', {}))
+            process_saturation(img, self.random_params.get('saturation', {}))
+            process_noise(img, self.random_params.get('noise', {}))
+            process_contrast(img, self.random_params.get('contrast', {}))
+            process_crop(img, self.random_params.get('crop', {}))
+            process_resize(img, self.random_params.get('resize', {}))
+            process_rotate(img, self.random_params.get('rotate', {}))
+            process_text(img, self.random_params.get('text', {}))
 
-            if self.random_params.get('brightness', {}).get('enable', False):
-                brightness = random.randint(
-                    *self.random_params.get('brightness', {}).get('range', (100, 100))) / 100
-                img.change_brightness(brightness)
-
-            if self.random_params.get('flip', {}).get('enable', False):
-                flip = random.choice(self.random_params.get('flip', {}).get('flip_code', 0))
-                if flip == -1:
-                    img.flip_horizontal()
-                elif flip == 1:
-                    img.flip_vertical()
-
-            if self.random_params.get('saturation', {}).get('enable', False):
-                img.change_saturation(
-                    random.randint(*self.random_params.get('saturation', {}).get('range', (50, 50))) / 100)
-
-            if self.random_params.get('noise', {}).get('enable', False):
-                var = random.randint(*self.random_params.get('saturation', {}).get('variance_range', (4, 4)))
-                mean = random.randint(*self.random_params.get('saturation', {}).get('mean_range', (4, 4)))
-                img.add_noise(var, mean)
-
-            if self.random_params.get('contrast', {}).get('enable', False):
-                img.change_contrast(
-                    random.randint(*self.random_params.get('saturation', {}).get('range', (100, 100))) / 100)
-
-            if self.random_params.get('crop', {}).get('enable', False):
-                x = random.randint(*self.random_params.get('crop', {}).get('left', (0, 0)))
-                y = random.randint(*self.random_params.get('crop', {}).get('top', (0, 0)))
-                wid = random.randint(*self.random_params.get('crop', {}).get('window_width', (0, 0)))
-                hei = random.randint(*self.random_params.get('crop', {}).get('window_height', (0, 0)))
-                if self.random_params.get('crop', {}).get('random', False):
-                    img.random_crop_image(wid, hei, x, y)
-                else:
-                    img.crop_image(x, y, wid, hei)
-
-            if self.random_params.get('resize', {}).get('enable', False):
-                wid = random.randint(*self.random_params.get('resize', {}).get('width_range', (512, 512)))
-                hei = random.randint(*self.random_params.get('resize', {}).get('height_range', (512, 512)))
-                img.resize_image(wid, hei)
-
-            if self.random_params.get('rotate', {}).get('enable', False):
-                img.rotate_image(random.randint(*self.random_params.get('rotate', {}).get('angle_range', (0, 0))))
-
-            if self.random_params.get('text', {}).get('enable', False):
-                text = self.random_params.get('text', {}).get('text', ' ')
-                for txt in text.split('\n'):
-                    position = (
-                        random.randint(*self.random_params.get('text', {}).get('position_x_range', (0, 0))),
-                        random.randint(*self.random_params.get('text', {}).get('position_y_range', (0, 0)))
-                    )
-                    font = self.random_params.get('text', {}).get('position_x_range', cv2.FONT_HERSHEY_SIMPLEX)
-                    scale = random.randint(*self.random_params.get('text', {}).get('font_scale_range', (10, 10))) / 10
-                    color_tmp = self.random_params.get('text', {}).get('color_range',
-                                                                       ((255, 255), (255, 255), (255, 255)))
-                    color = (
-                        random.randint(*color_tmp[0]),
-                        random.randint(*color_tmp[1]),
-                        random.randint(*color_tmp[2])
-                    )
-                    thick = random.randint(*self.random_params.get('text', {}).get('thickness_range', (1, 1)))
-                    blur = self.random_params.get('text', {}).get('enable_blur', False)
-                    power_tmp = self.random_params.get('text', {}).get('blur_range', ((3, 37), (3, 37)))
-                    power = (
-                        random.randint(*power_tmp[0]),
-                        random.randint(*power_tmp[1])
-                    )
-                    angle = random.randint(*self.random_params.get('text', {}).get('angle_range', (-15, 15)))
-
-                    img.add_text_to_image(txt, position, scale, color, thick, blur, power, angle)
         return self.images
 
     def augmentation_random_parallel(self, params={}):
@@ -676,15 +541,7 @@ class Images:
         :return: Массив обработанных изображений.
         """
 
-        if isinstance(params, dict):
-            for key, value in params.items():
-                if key in self.random_params:
-                    if isinstance(value, dict):
-                        for sub_key, sub_value in value.items():
-                            if sub_key in self.random_params[key]:
-                                self.random_params[key][sub_key] = sub_value
-                    else:
-                        self.random_params[key] = value
+        update_parameters(self.random_params, params)
 
         self.multiple(self.random_params.get('multiplicator', 1))
 

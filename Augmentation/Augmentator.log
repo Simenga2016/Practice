@@ -1401,3 +1401,673 @@ cv-python\opencv\modules\imgproc\src\imgwarp.cpp:2825: error: (-215:Assertion fa
 2024-06-28 10:58:00 - logger - INFO - File ./test/Expected/bmp.bmp successfully saved
 2024-06-28 10:58:16 - logger - INFO - File ./test/test.png opened successfully
 2024-06-28 10:58:16 - logger - INFO - File ./test/Expected/png.png successfully saved
+2024-06-28 13:13:57 - logger - INFO - Интерфейс успешно создан!
+2024-06-28 13:14:12 - logger - INFO - Параметры сохранены
+2024-06-28 13:14:12 - logger - INFO - Параметры сохранены
+2024-06-28 13:14:12 - logger - INFO - File ./input/Changeling_masked.jpg opened successfully
+2024-06-28 13:14:12 - logger - INFO - File ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png opened successfully
+2024-06-28 13:14:12 - logger - INFO - File ./input/nvidia-logo.png opened successfully
+2024-06-28 13:14:12 - logger - INFO - File ./input/Phoenix.jpg opened successfully
+2024-06-28 13:14:12 - logger - INFO - File ./input/risovach.ru (5).jpg opened successfully
+2024-06-28 13:14:12 - logger - INFO - File ./input/test.bmp opened successfully
+2024-06-28 13:14:12 - logger - ERROR - Не удалось открыть изображение по пути: ./input/test.gif
+2024-06-28 13:14:12 - logger - INFO - File ./input/test.gif opened successfully
+2024-06-28 13:14:12 - logger - INFO - File ./input/Why.jpg opened successfully
+2024-06-28 13:14:12 - logger - INFO - File ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg opened successfully
+2024-06-28 13:14:12 - logger - INFO - File ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg opened successfully
+2024-06-28 13:14:12 - logger - INFO - File ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg opened successfully
+2024-06-28 13:14:12 - logger - INFO - Папка ./input/ успешно открыта
+2024-06-28 13:14:13 - logger - INFO - Изображение ./input/Changeling_masked.jpg успешно обработано
+2024-06-28 13:14:14 - logger - INFO - Изображение ./input/nvidia-logo.png успешно обработано
+2024-06-28 13:14:14 - logger - INFO - Изображение ./input/risovach.ru (5).jpg успешно обработано
+2024-06-28 13:14:14 - logger - INFO - Изображение ./input/test.bmp успешно обработано
+2024-06-28 13:14:14 - logger - INFO - Изображение ./input/test.gif успешно обработано
+2024-06-28 13:14:14 - logger - INFO - Изображение ./input/Why.jpg успешно обработано
+2024-06-28 13:14:14 - logger - INFO - Изображение ./input/Phoenix.jpg успешно обработано
+2024-06-28 13:14:14 - logger - INFO - Изображение ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg успешно обработано
+2024-06-28 13:14:14 - logger - INFO - Изображение ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg успешно обработано
+2024-06-28 13:14:14 - logger - INFO - Изображение ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png успешно обработано
+2024-06-28 13:14:14 - logger - INFO - Изображение ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg успешно обработано
+2024-06-28 13:14:14 - logger - INFO - File ./output/out.jpeg successfully saved
+2024-06-28 13:14:14 - logger - INFO - File ./output/out(1).jpeg successfully saved
+2024-06-28 13:14:14 - logger - INFO - File ./output/out(2).jpeg successfully saved
+2024-06-28 13:14:14 - logger - INFO - File ./output/out(3).jpeg successfully saved
+2024-06-28 13:14:14 - logger - INFO - File ./output/out(4).jpeg successfully saved
+2024-06-28 13:14:14 - logger - INFO - File ./output/out(5).jpeg successfully saved
+2024-06-28 13:14:14 - logger - INFO - File ./output/out(7).jpeg successfully saved
+2024-06-28 13:14:14 - logger - INFO - File ./output/out(8).jpeg successfully saved
+2024-06-28 13:14:14 - logger - INFO - File ./output/out(9).jpeg successfully saved
+2024-06-28 13:14:14 - logger - INFO - File ./output/out(10).jpeg successfully saved
+2024-06-28 13:14:46 - logger - INFO - Интерфейс успешно создан!
+2024-06-28 13:15:07 - logger - INFO - Параметры сохранены
+2024-06-28 13:15:07 - logger - INFO - Параметры сохранены
+2024-06-28 13:15:07 - logger - INFO - File ./input/Changeling_masked.jpg opened successfully
+2024-06-28 13:15:07 - logger - INFO - File ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png opened successfully
+2024-06-28 13:15:07 - logger - INFO - File ./input/nvidia-logo.png opened successfully
+2024-06-28 13:15:07 - logger - INFO - File ./input/Phoenix.jpg opened successfully
+2024-06-28 13:15:07 - logger - INFO - File ./input/risovach.ru (5).jpg opened successfully
+2024-06-28 13:15:07 - logger - INFO - File ./input/test.bmp opened successfully
+2024-06-28 13:15:07 - logger - ERROR - Не удалось открыть изображение по пути: ./input/test.gif
+2024-06-28 13:15:07 - logger - INFO - File ./input/test.gif opened successfully
+2024-06-28 13:15:07 - logger - INFO - File ./input/Why.jpg opened successfully
+2024-06-28 13:15:07 - logger - INFO - File ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg opened successfully
+2024-06-28 13:15:07 - logger - INFO - File ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg opened successfully
+2024-06-28 13:15:07 - logger - INFO - File ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg opened successfully
+2024-06-28 13:15:07 - logger - INFO - Папка ./input/ успешно открыта
+2024-06-28 13:15:08 - logger - INFO - Изображение ./input/test.gif успешно обработано
+2024-06-28 13:15:08 - logger - INFO - Изображение ./input/Why.jpg успешно обработано
+2024-06-28 13:15:08 - logger - INFO - Изображение ./input/Phoenix.jpg успешно обработано
+2024-06-28 13:15:08 - logger - INFO - Изображение ./input/Changeling_masked.jpg успешно обработано
+2024-06-28 13:15:09 - logger - INFO - Изображение ./input/risovach.ru (5).jpg успешно обработано
+2024-06-28 13:15:09 - logger - INFO - Изображение ./input/test.bmp успешно обработано
+2024-06-28 13:15:09 - logger - INFO - Изображение ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg успешно обработано
+2024-06-28 13:15:09 - logger - INFO - Изображение ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg успешно обработано
+2024-06-28 13:15:09 - logger - INFO - Изображение ./input/Changeling_masked.jpg успешно обработано
+2024-06-28 13:15:09 - logger - INFO - Изображение ./input/Changeling_masked.jpg успешно обработано
+2024-06-28 13:15:09 - logger - INFO - Изображение ./input/Changeling_masked.jpg успешно обработано
+2024-06-28 13:15:09 - logger - INFO - Изображение ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg успешно обработано
+2024-06-28 13:15:09 - logger - INFO - Изображение ./input/Changeling_masked.jpg успешно обработано
+2024-06-28 13:15:09 - logger - INFO - Изображение ./input/Changeling_masked.jpg успешно обработано
+2024-06-28 13:15:09 - logger - INFO - Изображение ./input/nvidia-logo.png успешно обработано
+2024-06-28 13:15:09 - logger - INFO - Изображение ./input/nvidia-logo.png успешно обработано
+2024-06-28 13:15:09 - logger - INFO - Изображение ./input/nvidia-logo.png успешно обработано
+2024-06-28 13:15:09 - logger - INFO - Изображение ./input/Changeling_masked.jpg успешно обработано
+2024-06-28 13:15:09 - logger - INFO - Изображение ./input/Phoenix.jpg успешно обработано
+2024-06-28 13:15:09 - logger - INFO - Изображение ./input/nvidia-logo.png успешно обработано
+2024-06-28 13:15:09 - logger - INFO - Изображение ./input/Changeling_masked.jpg успешно обработано
+2024-06-28 13:15:09 - logger - INFO - Изображение ./input/nvidia-logo.png успешно обработано
+2024-06-28 13:15:09 - logger - INFO - Изображение ./input/nvidia-logo.png успешно обработано
+2024-06-28 13:15:09 - logger - INFO - Изображение ./input/Changeling_masked.jpg успешно обработано
+2024-06-28 13:15:09 - logger - INFO - Изображение ./input/Changeling_masked.jpg успешно обработано
+2024-06-28 13:15:09 - logger - INFO - Изображение ./input/nvidia-logo.png успешно обработано
+2024-06-28 13:15:09 - logger - INFO - Изображение ./input/Phoenix.jpg успешно обработано
+2024-06-28 13:15:09 - logger - INFO - Изображение ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png успешно обработано
+2024-06-28 13:15:09 - logger - INFO - Изображение ./input/nvidia-logo.png успешно обработано
+2024-06-28 13:15:09 - logger - INFO - Изображение ./input/risovach.ru (5).jpg успешно обработано
+2024-06-28 13:15:09 - logger - INFO - Изображение ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png успешно обработано
+2024-06-28 13:15:09 - logger - INFO - Изображение ./input/Phoenix.jpg успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/Phoenix.jpg успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/Phoenix.jpg успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/nvidia-logo.png успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/risovach.ru (5).jpg успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/Phoenix.jpg успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/test.bmp успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/test.bmp успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/risovach.ru (5).jpg успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/risovach.ru (5).jpg успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/test.bmp успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/risovach.ru (5).jpg успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/test.bmp успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/test.bmp успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/test.gif успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/test.gif успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/test.gif успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/test.gif успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/test.gif успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/test.gif успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/test.gif успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/test.gif успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/test.bmp успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/Why.jpg успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/test.bmp успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/test.gif успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/test.bmp успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/Phoenix.jpg успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/risovach.ru (5).jpg успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/Why.jpg успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/risovach.ru (5).jpg успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/Phoenix.jpg успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/Why.jpg успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/risovach.ru (5).jpg успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/Why.jpg успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/Why.jpg успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/risovach.ru (5).jpg успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/Why.jpg успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/test.bmp успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/Why.jpg успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/Why.jpg успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/Why.jpg успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/Phoenix.jpg успешно обработано
+2024-06-28 13:15:10 - logger - INFO - Изображение ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg успешно обработано
+2024-06-28 13:15:11 - logger - INFO - Изображение ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg успешно обработано
+2024-06-28 13:15:11 - logger - INFO - Изображение ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg успешно обработано
+2024-06-28 13:15:11 - logger - INFO - Изображение ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg успешно обработано
+2024-06-28 13:15:11 - logger - INFO - Изображение ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg успешно обработано
+2024-06-28 13:15:11 - logger - INFO - Изображение ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg успешно обработано
+2024-06-28 13:15:11 - logger - INFO - Изображение ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg успешно обработано
+2024-06-28 13:15:11 - logger - INFO - Изображение ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg успешно обработано
+2024-06-28 13:15:11 - logger - INFO - Изображение ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png успешно обработано
+2024-06-28 13:15:11 - logger - INFO - Изображение ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg успешно обработано
+2024-06-28 13:15:11 - logger - INFO - Изображение ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png успешно обработано
+2024-06-28 13:15:11 - logger - INFO - Изображение ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg успешно обработано
+2024-06-28 13:15:11 - logger - INFO - Изображение ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg успешно обработано
+2024-06-28 13:15:11 - logger - INFO - Изображение ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg успешно обработано
+2024-06-28 13:15:11 - logger - INFO - Изображение ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg успешно обработано
+2024-06-28 13:15:11 - logger - INFO - Изображение ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png успешно обработано
+2024-06-28 13:15:11 - logger - INFO - Изображение ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg успешно обработано
+2024-06-28 13:15:11 - logger - INFO - Изображение ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg успешно обработано
+2024-06-28 13:15:11 - logger - INFO - Изображение ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg успешно обработано
+2024-06-28 13:15:11 - logger - INFO - Изображение ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg успешно обработано
+2024-06-28 13:15:11 - logger - INFO - Изображение ./input/nvidia-logo.png успешно обработано
+2024-06-28 13:15:11 - logger - INFO - Изображение ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg успешно обработано
+2024-06-28 13:15:11 - logger - INFO - Изображение ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg успешно обработано
+2024-06-28 13:15:11 - logger - INFO - Изображение ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg успешно обработано
+2024-06-28 13:15:11 - logger - INFO - Изображение ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg успешно обработано
+2024-06-28 13:15:11 - logger - INFO - Изображение ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg успешно обработано
+2024-06-28 13:15:12 - logger - INFO - Изображение ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg успешно обработано
+2024-06-28 13:15:12 - logger - INFO - Изображение ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg успешно обработано
+2024-06-28 13:15:12 - logger - INFO - Изображение ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg успешно обработано
+2024-06-28 13:15:12 - logger - INFO - Изображение ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg успешно обработано
+2024-06-28 13:15:12 - logger - INFO - Изображение ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png успешно обработано
+2024-06-28 13:15:12 - logger - INFO - Изображение ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png успешно обработано
+2024-06-28 13:15:12 - logger - INFO - File ./output/out.jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(1).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(2).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(3).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(4).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(5).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(7).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(8).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(9).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(10).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(11).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(12).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(13).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(14).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(15).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(16).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(17).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(18).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(19).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(20).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(21).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(22).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(23).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(24).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(25).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(26).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(27).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(28).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(29).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(30).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(31).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(32).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(33).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(34).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(35).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(36).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(37).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(38).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(39).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(40).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(41).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(42).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(43).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(44).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(45).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(46).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(47).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(48).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(49).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(50).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(51).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(52).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(53).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(54).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(55).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(56).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(57).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(58).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(59).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(60).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(61).jpeg successfully saved
+2024-06-28 13:15:12 - logger - INFO - File ./output/out(62).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(63).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(64).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(74).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(75).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(76).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(77).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(78).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(79).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(80).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(81).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(82).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(83).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(84).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(85).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(86).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(87).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(88).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(89).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(90).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(91).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(92).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(93).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(94).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(95).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(96).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(97).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(98).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(99).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(100).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(101).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(102).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(103).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(104).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(105).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(106).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(107).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(108).jpeg successfully saved
+2024-06-28 13:15:13 - logger - INFO - File ./output/out(109).jpeg successfully saved
+2024-06-28 13:18:22 - logger - INFO - Интерфейс успешно создан!
+2024-06-28 13:18:38 - logger - INFO - Параметры сохранены
+2024-06-28 13:18:38 - logger - INFO - Параметры сохранены
+2024-06-28 13:18:38 - logger - INFO - File ./input/Changeling_masked.jpg opened successfully
+2024-06-28 13:18:38 - logger - INFO - File ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png opened successfully
+2024-06-28 13:18:38 - logger - INFO - File ./input/nvidia-logo.png opened successfully
+2024-06-28 13:18:38 - logger - INFO - File ./input/Phoenix.jpg opened successfully
+2024-06-28 13:18:38 - logger - INFO - File ./input/risovach.ru (5).jpg opened successfully
+2024-06-28 13:18:38 - logger - INFO - File ./input/test.bmp opened successfully
+2024-06-28 13:18:38 - logger - ERROR - Не удалось открыть изображение по пути: ./input/test.gif
+2024-06-28 13:18:38 - logger - INFO - File ./input/test.gif opened successfully
+2024-06-28 13:18:38 - logger - INFO - File ./input/Why.jpg opened successfully
+2024-06-28 13:18:38 - logger - INFO - File ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg opened successfully
+2024-06-28 13:18:38 - logger - INFO - File ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg opened successfully
+2024-06-28 13:18:38 - logger - INFO - File ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg opened successfully
+2024-06-28 13:18:38 - logger - INFO - Папка ./input/ успешно открыта
+2024-06-28 13:18:39 - logger - INFO - Изображение ./input/test.gif успешно обработано
+2024-06-28 13:18:39 - logger - INFO - Изображение ./input/test.bmp успешно обработано
+2024-06-28 13:18:39 - logger - INFO - Изображение ./input/Why.jpg успешно обработано
+2024-06-28 13:18:39 - logger - INFO - Изображение ./input/nvidia-logo.png успешно обработано
+2024-06-28 13:18:39 - logger - INFO - Изображение ./input/risovach.ru (5).jpg успешно обработано
+2024-06-28 13:18:39 - logger - INFO - Изображение ./input/Changeling_masked.jpg успешно обработано
+2024-06-28 13:18:39 - logger - INFO - Изображение ./input/Phoenix.jpg успешно обработано
+2024-06-28 13:18:39 - logger - INFO - Изображение ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg успешно обработано
+2024-06-28 13:18:39 - logger - INFO - Изображение ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg успешно обработано
+2024-06-28 13:18:39 - logger - INFO - Изображение ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg успешно обработано
+2024-06-28 13:18:40 - logger - INFO - Изображение ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png успешно обработано
+2024-06-28 13:18:40 - logger - INFO - File ./output/out.jpeg successfully saved
+2024-06-28 13:18:40 - logger - INFO - File ./output/out(1).jpeg successfully saved
+2024-06-28 13:18:40 - logger - INFO - File ./output/out(2).jpeg successfully saved
+2024-06-28 13:18:40 - logger - INFO - File ./output/out(3).jpeg successfully saved
+2024-06-28 13:18:40 - logger - INFO - File ./output/out(4).jpeg successfully saved
+2024-06-28 13:18:40 - logger - INFO - File ./output/out(5).jpeg successfully saved
+2024-06-28 13:18:40 - logger - INFO - File ./output/out(7).jpeg successfully saved
+2024-06-28 13:18:40 - logger - INFO - File ./output/out(8).jpeg successfully saved
+2024-06-28 13:18:40 - logger - INFO - File ./output/out(9).jpeg successfully saved
+2024-06-28 13:18:40 - logger - INFO - File ./output/out(10).jpeg successfully saved
+2024-06-28 13:24:07 - logger - INFO - Интерфейс успешно создан!
+2024-06-28 13:24:20 - logger - INFO - Параметры сохранены
+2024-06-28 13:24:20 - logger - INFO - Параметры сохранены
+2024-06-28 13:24:20 - logger - INFO - File ./input/Changeling_masked.jpg opened successfully
+2024-06-28 13:24:20 - logger - INFO - File ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png opened successfully
+2024-06-28 13:24:20 - logger - INFO - File ./input/nvidia-logo.png opened successfully
+2024-06-28 13:24:20 - logger - INFO - File ./input/Phoenix.jpg opened successfully
+2024-06-28 13:24:20 - logger - INFO - File ./input/risovach.ru (5).jpg opened successfully
+2024-06-28 13:24:20 - logger - INFO - File ./input/test.bmp opened successfully
+2024-06-28 13:24:20 - logger - ERROR - Не удалось открыть изображение по пути: ./input/test.gif
+2024-06-28 13:24:20 - logger - INFO - File ./input/test.gif opened successfully
+2024-06-28 13:24:20 - logger - INFO - File ./input/Why.jpg opened successfully
+2024-06-28 13:24:20 - logger - INFO - File ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg opened successfully
+2024-06-28 13:24:20 - logger - INFO - File ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg opened successfully
+2024-06-28 13:24:20 - logger - INFO - File ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg opened successfully
+2024-06-28 13:24:20 - logger - INFO - Папка ./input/ успешно открыта
+2024-06-28 13:24:21 - logger - INFO - Изображение ./input/Changeling_masked.jpg успешно обработано
+2024-06-28 13:24:21 - logger - INFO - Изображение ./input/test.gif успешно обработано
+2024-06-28 13:24:21 - logger - INFO - Изображение ./input/nvidia-logo.png успешно обработано
+2024-06-28 13:24:21 - logger - INFO - Изображение ./input/test.bmp успешно обработано
+2024-06-28 13:24:21 - logger - INFO - Изображение ./input/Phoenix.jpg успешно обработано
+2024-06-28 13:24:21 - logger - INFO - Изображение ./input/Why.jpg успешно обработано
+2024-06-28 13:24:21 - logger - INFO - Изображение ./input/risovach.ru (5).jpg успешно обработано
+2024-06-28 13:24:21 - logger - INFO - Изображение ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg успешно обработано
+2024-06-28 13:24:21 - logger - INFO - Изображение ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg успешно обработано
+2024-06-28 13:24:22 - logger - INFO - Изображение ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg успешно обработано
+2024-06-28 13:24:22 - logger - INFO - Изображение ./input/Changeling_masked.jpg успешно обработано
+2024-06-28 13:24:22 - logger - INFO - Изображение ./input/Changeling_masked.jpg успешно обработано
+2024-06-28 13:24:22 - logger - INFO - Изображение ./input/test.gif успешно обработано
+2024-06-28 13:24:22 - logger - INFO - Изображение ./input/test.gif успешно обработано
+2024-06-28 13:24:22 - logger - INFO - Изображение ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png успешно обработано
+2024-06-28 13:24:22 - logger - INFO - Изображение ./input/risovach.ru (5).jpg успешно обработано
+2024-06-28 13:24:22 - logger - INFO - Изображение ./input/test.bmp успешно обработано
+2024-06-28 13:24:22 - logger - INFO - Изображение ./input/test.bmp успешно обработано
+2024-06-28 13:24:22 - logger - INFO - Изображение ./input/Why.jpg успешно обработано
+2024-06-28 13:24:22 - logger - INFO - Изображение ./input/risovach.ru (5).jpg успешно обработано
+2024-06-28 13:24:22 - logger - INFO - Изображение ./input/nvidia-logo.png успешно обработано
+2024-06-28 13:24:22 - logger - INFO - Изображение ./input/nvidia-logo.png успешно обработано
+2024-06-28 13:24:22 - logger - INFO - Изображение ./input/Why.jpg успешно обработано
+2024-06-28 13:24:22 - logger - INFO - Изображение ./input/Phoenix.jpg успешно обработано
+2024-06-28 13:24:22 - logger - INFO - Изображение ./input/Phoenix.jpg успешно обработано
+2024-06-28 13:24:22 - logger - INFO - Изображение ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png успешно обработано
+2024-06-28 13:24:22 - logger - INFO - Изображение ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png успешно обработано
+2024-06-28 13:24:22 - logger - INFO - Изображение ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg успешно обработано
+2024-06-28 13:24:22 - logger - INFO - Изображение ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg успешно обработано
+2024-06-28 13:24:22 - logger - INFO - Изображение ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg успешно обработано
+2024-06-28 13:24:22 - logger - INFO - Изображение ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg успешно обработано
+2024-06-28 13:24:22 - logger - INFO - Изображение ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg успешно обработано
+2024-06-28 13:24:22 - logger - INFO - Изображение ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg успешно обработано
+2024-06-28 13:24:22 - logger - ERROR - Ошибка во время очищения папки ./output/out: [WinError 3] Системе не удается найти указанный путь: './output/out'
+2024-06-28 13:24:22 - logger - INFO - File ./output/out.jpeg successfully saved
+2024-06-28 13:24:22 - logger - INFO - File ./output/out(1).jpeg successfully saved
+2024-06-28 13:24:22 - logger - INFO - File ./output/out(2).jpeg successfully saved
+2024-06-28 13:24:22 - logger - INFO - File ./output/out(3).jpeg successfully saved
+2024-06-28 13:24:22 - logger - INFO - File ./output/out(4).jpeg successfully saved
+2024-06-28 13:24:22 - logger - INFO - File ./output/out(5).jpeg successfully saved
+2024-06-28 13:24:22 - logger - INFO - File ./output/out(7).jpeg successfully saved
+2024-06-28 13:24:22 - logger - INFO - File ./output/out(8).jpeg successfully saved
+2024-06-28 13:24:22 - logger - INFO - File ./output/out(9).jpeg successfully saved
+2024-06-28 13:24:22 - logger - INFO - File ./output/out(10).jpeg successfully saved
+2024-06-28 13:24:22 - logger - INFO - File ./output/out(11).jpeg successfully saved
+2024-06-28 13:24:22 - logger - INFO - File ./output/out(12).jpeg successfully saved
+2024-06-28 13:24:22 - logger - INFO - File ./output/out(13).jpeg successfully saved
+2024-06-28 13:24:22 - logger - INFO - File ./output/out(14).jpeg successfully saved
+2024-06-28 13:24:22 - logger - INFO - File ./output/out(15).jpeg successfully saved
+2024-06-28 13:24:22 - logger - INFO - File ./output/out(16).jpeg successfully saved
+2024-06-28 13:24:22 - logger - INFO - File ./output/out(17).jpeg successfully saved
+2024-06-28 13:24:22 - logger - INFO - File ./output/out(18).jpeg successfully saved
+2024-06-28 13:24:22 - logger - INFO - File ./output/out(19).jpeg successfully saved
+2024-06-28 13:24:22 - logger - INFO - File ./output/out(20).jpeg successfully saved
+2024-06-28 13:24:22 - logger - INFO - File ./output/out(21).jpeg successfully saved
+2024-06-28 13:24:22 - logger - INFO - File ./output/out(22).jpeg successfully saved
+2024-06-28 13:24:22 - logger - INFO - File ./output/out(25).jpeg successfully saved
+2024-06-28 13:24:22 - logger - INFO - File ./output/out(26).jpeg successfully saved
+2024-06-28 13:24:22 - logger - INFO - File ./output/out(27).jpeg successfully saved
+2024-06-28 13:24:22 - logger - INFO - File ./output/out(28).jpeg successfully saved
+2024-06-28 13:24:22 - logger - INFO - File ./output/out(29).jpeg successfully saved
+2024-06-28 13:24:22 - logger - INFO - File ./output/out(30).jpeg successfully saved
+2024-06-28 13:24:22 - logger - INFO - File ./output/out(31).jpeg successfully saved
+2024-06-28 13:24:22 - logger - INFO - File ./output/out(32).jpeg successfully saved
+2024-06-28 13:48:19 - logger - INFO - Интерфейс успешно создан!
+2024-06-28 13:48:20 - logger - INFO - Параметры сохранены
+2024-06-28 13:48:20 - logger - INFO - Параметры сохранены
+2024-06-28 13:48:20 - logger - INFO - File ./input/Changeling_masked.jpg opened successfully
+2024-06-28 13:48:20 - logger - INFO - File ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png opened successfully
+2024-06-28 13:48:20 - logger - INFO - File ./input/nvidia-logo.png opened successfully
+2024-06-28 13:48:20 - logger - INFO - File ./input/Phoenix.jpg opened successfully
+2024-06-28 13:48:20 - logger - INFO - File ./input/risovach.ru (5).jpg opened successfully
+2024-06-28 13:48:20 - logger - INFO - File ./input/test.bmp opened successfully
+2024-06-28 13:48:20 - logger - ERROR - Не удалось открыть изображение по пути: ./input/test.gif
+2024-06-28 13:48:20 - logger - INFO - File ./input/test.gif opened successfully
+2024-06-28 13:48:20 - logger - INFO - File ./input/Why.jpg opened successfully
+2024-06-28 13:48:20 - logger - INFO - File ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg opened successfully
+2024-06-28 13:48:20 - logger - INFO - File ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg opened successfully
+2024-06-28 13:48:20 - logger - INFO - File ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg opened successfully
+2024-06-28 13:48:20 - logger - INFO - Папка ./input/ успешно открыта
+2024-06-28 13:48:21 - logger - INFO - Изображение ./input/Changeling_masked.jpg успешно обработано
+2024-06-28 13:48:21 - logger - INFO - Изображение ./input/nvidia-logo.png успешно обработано
+2024-06-28 13:48:21 - logger - INFO - Изображение ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png успешно обработано
+2024-06-28 13:48:21 - logger - INFO - Изображение ./input/Phoenix.jpg успешно обработано
+2024-06-28 13:48:21 - logger - INFO - Изображение ./input/risovach.ru (5).jpg успешно обработано
+2024-06-28 13:48:21 - logger - INFO - Изображение ./input/test.bmp успешно обработано
+2024-06-28 13:48:21 - logger - INFO - Изображение ./input/test.gif успешно обработано
+2024-06-28 13:48:21 - logger - INFO - Изображение ./input/Why.jpg успешно обработано
+2024-06-28 13:48:21 - logger - INFO - Изображение ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg успешно обработано
+2024-06-28 13:48:22 - logger - INFO - Изображение ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg успешно обработано
+2024-06-28 13:48:22 - logger - INFO - Изображение ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg успешно обработано
+2024-06-28 13:48:22 - logger - ERROR - Ошибка массового сохранения 'Images' object has no attribute 'logger'
+2024-06-28 13:48:48 - logger - INFO - Интерфейс успешно создан!
+2024-06-28 13:48:50 - logger - INFO - Параметры сохранены
+2024-06-28 13:48:50 - logger - INFO - Параметры сохранены
+2024-06-28 13:48:50 - logger - INFO - File ./input/Changeling_masked.jpg opened successfully
+2024-06-28 13:48:50 - logger - INFO - File ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png opened successfully
+2024-06-28 13:48:50 - logger - INFO - File ./input/nvidia-logo.png opened successfully
+2024-06-28 13:48:50 - logger - INFO - File ./input/Phoenix.jpg opened successfully
+2024-06-28 13:48:50 - logger - INFO - File ./input/risovach.ru (5).jpg opened successfully
+2024-06-28 13:48:50 - logger - INFO - File ./input/test.bmp opened successfully
+2024-06-28 13:48:50 - logger - ERROR - Не удалось открыть изображение по пути: ./input/test.gif
+2024-06-28 13:48:50 - logger - INFO - File ./input/test.gif opened successfully
+2024-06-28 13:48:50 - logger - INFO - File ./input/Why.jpg opened successfully
+2024-06-28 13:48:50 - logger - INFO - File ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg opened successfully
+2024-06-28 13:48:50 - logger - INFO - File ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg opened successfully
+2024-06-28 13:48:50 - logger - INFO - File ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg opened successfully
+2024-06-28 13:48:50 - logger - INFO - Папка ./input/ успешно открыта
+2024-06-28 13:48:51 - logger - INFO - Изображение ./input/Changeling_masked.jpg успешно обработано
+2024-06-28 13:48:51 - logger - INFO - Изображение ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png успешно обработано
+2024-06-28 13:48:51 - logger - INFO - Изображение ./input/nvidia-logo.png успешно обработано
+2024-06-28 13:48:51 - logger - INFO - Изображение ./input/Phoenix.jpg успешно обработано
+2024-06-28 13:48:51 - logger - INFO - Изображение ./input/risovach.ru (5).jpg успешно обработано
+2024-06-28 13:48:51 - logger - INFO - Изображение ./input/test.bmp успешно обработано
+2024-06-28 13:48:51 - logger - INFO - Изображение ./input/test.gif успешно обработано
+2024-06-28 13:48:51 - logger - INFO - Изображение ./input/Why.jpg успешно обработано
+2024-06-28 13:48:51 - logger - INFO - Изображение ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg успешно обработано
+2024-06-28 13:48:51 - logger - INFO - Изображение ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg успешно обработано
+2024-06-28 13:48:51 - logger - INFO - Изображение ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg успешно обработано
+2024-06-28 13:48:51 - logger - ERROR - Ошибка массового сохранения 'Images' object has no attribute 'logger'
+2024-06-28 13:49:04 - logger - INFO - Интерфейс успешно создан!
+2024-06-28 13:49:05 - logger - INFO - Параметры сохранены
+2024-06-28 13:49:06 - logger - INFO - Параметры сохранены
+2024-06-28 13:49:06 - logger - INFO - File ./input/Changeling_masked.jpg opened successfully
+2024-06-28 13:49:06 - logger - INFO - File ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png opened successfully
+2024-06-28 13:49:06 - logger - INFO - File ./input/nvidia-logo.png opened successfully
+2024-06-28 13:49:06 - logger - INFO - File ./input/Phoenix.jpg opened successfully
+2024-06-28 13:49:06 - logger - INFO - File ./input/risovach.ru (5).jpg opened successfully
+2024-06-28 13:49:06 - logger - INFO - File ./input/test.bmp opened successfully
+2024-06-28 13:49:06 - logger - ERROR - Не удалось открыть изображение по пути: ./input/test.gif
+2024-06-28 13:49:06 - logger - INFO - File ./input/test.gif opened successfully
+2024-06-28 13:49:06 - logger - INFO - File ./input/Why.jpg opened successfully
+2024-06-28 13:49:06 - logger - INFO - File ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg opened successfully
+2024-06-28 13:49:06 - logger - INFO - File ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg opened successfully
+2024-06-28 13:49:06 - logger - INFO - File ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg opened successfully
+2024-06-28 13:49:06 - logger - INFO - Папка ./input/ успешно открыта
+2024-06-28 13:49:07 - logger - INFO - Изображение ./input/Changeling_masked.jpg успешно обработано
+2024-06-28 13:49:07 - logger - INFO - Изображение ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png успешно обработано
+2024-06-28 13:49:07 - logger - INFO - Изображение ./input/nvidia-logo.png успешно обработано
+2024-06-28 13:49:07 - logger - INFO - Изображение ./input/Phoenix.jpg успешно обработано
+2024-06-28 13:49:07 - logger - INFO - Изображение ./input/risovach.ru (5).jpg успешно обработано
+2024-06-28 13:49:07 - logger - INFO - Изображение ./input/test.bmp успешно обработано
+2024-06-28 13:49:07 - logger - INFO - Изображение ./input/test.gif успешно обработано
+2024-06-28 13:49:07 - logger - INFO - Изображение ./input/Why.jpg успешно обработано
+2024-06-28 13:49:07 - logger - INFO - Изображение ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg успешно обработано
+2024-06-28 13:49:07 - logger - INFO - Изображение ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg успешно обработано
+2024-06-28 13:49:07 - logger - INFO - Изображение ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg успешно обработано
+2024-06-28 13:49:07 - logger - INFO - Папка ./output успешно очищена!
+2024-06-28 13:49:07 - logger - INFO - File ./output/out.jpeg successfully saved
+2024-06-28 13:49:07 - logger - INFO - File ./output/out(1).jpeg successfully saved
+2024-06-28 13:49:07 - logger - INFO - File ./output/out(2).jpeg successfully saved
+2024-06-28 13:49:07 - logger - INFO - File ./output/out(3).jpeg successfully saved
+2024-06-28 13:49:07 - logger - INFO - File ./output/out(4).jpeg successfully saved
+2024-06-28 13:49:07 - logger - INFO - File ./output/out(5).jpeg successfully saved
+2024-06-28 13:49:07 - logger - INFO - File ./output/out(7).jpeg successfully saved
+2024-06-28 13:49:07 - logger - INFO - File ./output/out(8).jpeg successfully saved
+2024-06-28 13:49:07 - logger - INFO - File ./output/out(9).jpeg successfully saved
+2024-06-28 13:49:07 - logger - INFO - File ./output/out(10).jpeg successfully saved
+2024-06-28 13:49:53 - logger - INFO - Интерфейс успешно создан!
+2024-06-28 13:49:55 - logger - INFO - Параметры сохранены
+2024-06-28 13:49:55 - logger - INFO - Параметры сохранены
+2024-06-28 13:49:55 - logger - INFO - File ./input/Changeling_masked.jpg opened successfully
+2024-06-28 13:49:56 - logger - INFO - File ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png opened successfully
+2024-06-28 13:49:56 - logger - INFO - File ./input/nvidia-logo.png opened successfully
+2024-06-28 13:49:56 - logger - INFO - File ./input/Phoenix.jpg opened successfully
+2024-06-28 13:49:56 - logger - INFO - File ./input/risovach.ru (5).jpg opened successfully
+2024-06-28 13:49:56 - logger - INFO - File ./input/test.bmp opened successfully
+2024-06-28 13:49:56 - logger - ERROR - Не удалось открыть изображение по пути: ./input/test.gif
+2024-06-28 13:49:56 - logger - INFO - File ./input/test.gif opened successfully
+2024-06-28 13:49:56 - logger - INFO - File ./input/Why.jpg opened successfully
+2024-06-28 13:49:56 - logger - INFO - File ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg opened successfully
+2024-06-28 13:49:56 - logger - INFO - File ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg opened successfully
+2024-06-28 13:49:56 - logger - INFO - File ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg opened successfully
+2024-06-28 13:49:56 - logger - INFO - Папка ./input/ успешно открыта
+2024-06-28 13:49:57 - logger - INFO - Изображение ./input/Changeling_masked.jpg успешно обработано
+2024-06-28 13:49:57 - logger - INFO - Изображение ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png успешно обработано
+2024-06-28 13:49:57 - logger - INFO - Изображение ./input/nvidia-logo.png успешно обработано
+2024-06-28 13:49:57 - logger - INFO - Изображение ./input/Phoenix.jpg успешно обработано
+2024-06-28 13:49:57 - logger - INFO - Изображение ./input/risovach.ru (5).jpg успешно обработано
+2024-06-28 13:49:57 - logger - INFO - Изображение ./input/test.bmp успешно обработано
+2024-06-28 13:49:57 - logger - INFO - Изображение ./input/test.gif успешно обработано
+2024-06-28 13:49:57 - logger - INFO - Изображение ./input/Why.jpg успешно обработано
+2024-06-28 13:49:57 - logger - INFO - Изображение ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg успешно обработано
+2024-06-28 13:49:57 - logger - INFO - Изображение ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg успешно обработано
+2024-06-28 13:49:57 - logger - INFO - Изображение ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg успешно обработано
+2024-06-28 13:49:57 - logger - INFO - Удален файл: ./output\out(1).jpeg
+2024-06-28 13:49:57 - logger - INFO - Удален файл: ./output\out(10).jpeg
+2024-06-28 13:49:57 - logger - INFO - Удален файл: ./output\out(11).jpeg
+2024-06-28 13:49:57 - logger - INFO - Удален файл: ./output\out(12).jpeg
+2024-06-28 13:49:57 - logger - INFO - Удален файл: ./output\out(13).jpeg
+2024-06-28 13:49:57 - logger - INFO - Удален файл: ./output\out(14).jpeg
+2024-06-28 13:49:57 - logger - INFO - Удален файл: ./output\out(15).jpeg
+2024-06-28 13:49:57 - logger - INFO - Удален файл: ./output\out(16).jpeg
+2024-06-28 13:49:57 - logger - INFO - Удален файл: ./output\out(17).jpeg
+2024-06-28 13:49:57 - logger - INFO - Удален файл: ./output\out(18).jpeg
+2024-06-28 13:49:57 - logger - INFO - Удален файл: ./output\out(19).jpeg
+2024-06-28 13:49:57 - logger - INFO - Удален файл: ./output\out(2).jpeg
+2024-06-28 13:49:57 - logger - INFO - Удален файл: ./output\out(20).jpeg
+2024-06-28 13:49:57 - logger - INFO - Удален файл: ./output\out(21).jpeg
+2024-06-28 13:49:57 - logger - INFO - Удален файл: ./output\out(22).jpeg
+2024-06-28 13:49:57 - logger - INFO - Удален файл: ./output\out(25).jpeg
+2024-06-28 13:49:57 - logger - INFO - Удален файл: ./output\out(26).jpeg
+2024-06-28 13:49:57 - logger - INFO - Удален файл: ./output\out(27).jpeg
+2024-06-28 13:49:57 - logger - INFO - Удален файл: ./output\out(28).jpeg
+2024-06-28 13:49:57 - logger - INFO - Удален файл: ./output\out(29).jpeg
+2024-06-28 13:49:57 - logger - INFO - Удален файл: ./output\out(3).jpeg
+2024-06-28 13:49:57 - logger - INFO - Удален файл: ./output\out(30).jpeg
+2024-06-28 13:49:57 - logger - INFO - Удален файл: ./output\out(31).jpeg
+2024-06-28 13:49:57 - logger - INFO - Удален файл: ./output\out(32).jpeg
+2024-06-28 13:49:57 - logger - INFO - Удален файл: ./output\out(4).jpeg
+2024-06-28 13:49:57 - logger - INFO - Удален файл: ./output\out(5).jpeg
+2024-06-28 13:49:57 - logger - INFO - Удален файл: ./output\out(7).jpeg
+2024-06-28 13:49:57 - logger - INFO - Удален файл: ./output\out(8).jpeg
+2024-06-28 13:49:57 - logger - INFO - Удален файл: ./output\out(9).jpeg
+2024-06-28 13:49:57 - logger - INFO - Удален файл: ./output\out.jpeg
+2024-06-28 13:49:57 - logger - INFO - Папка ./output успешно очищена!
+2024-06-28 13:49:57 - logger - INFO - File ./output/out.jpeg successfully saved
+2024-06-28 13:49:57 - logger - INFO - File ./output/out(1).jpeg successfully saved
+2024-06-28 13:49:57 - logger - INFO - File ./output/out(2).jpeg successfully saved
+2024-06-28 13:49:57 - logger - INFO - File ./output/out(3).jpeg successfully saved
+2024-06-28 13:49:57 - logger - INFO - File ./output/out(4).jpeg successfully saved
+2024-06-28 13:49:57 - logger - INFO - File ./output/out(5).jpeg successfully saved
+2024-06-28 13:49:57 - logger - INFO - File ./output/out(7).jpeg successfully saved
+2024-06-28 13:49:57 - logger - INFO - File ./output/out(8).jpeg successfully saved
+2024-06-28 13:49:57 - logger - INFO - File ./output/out(9).jpeg successfully saved
+2024-06-28 13:49:57 - logger - INFO - File ./output/out(10).jpeg successfully saved
+2024-06-28 13:56:45 - logger - INFO - Интерфейс успешно создан!
+2024-06-28 13:56:47 - logger - INFO - Параметры сохранены
+2024-06-28 13:56:47 - logger - INFO - Параметры сохранены
+2024-06-28 13:56:47 - logger - INFO - File ./input/Changeling_masked.jpg opened successfully
+2024-06-28 13:56:47 - logger - INFO - File ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png opened successfully
+2024-06-28 13:56:47 - logger - INFO - File ./input/nvidia-logo.png opened successfully
+2024-06-28 13:56:47 - logger - INFO - File ./input/Phoenix.jpg opened successfully
+2024-06-28 13:56:47 - logger - INFO - File ./input/risovach.ru (5).jpg opened successfully
+2024-06-28 13:56:47 - logger - INFO - File ./input/test.bmp opened successfully
+2024-06-28 13:56:47 - logger - ERROR - Не удалось открыть изображение по пути: ./input/test.gif
+2024-06-28 13:56:47 - logger - INFO - File ./input/test.gif opened successfully
+2024-06-28 13:56:47 - logger - INFO - File ./input/Why.jpg opened successfully
+2024-06-28 13:56:47 - logger - INFO - File ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg opened successfully
+2024-06-28 13:56:47 - logger - INFO - File ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg opened successfully
+2024-06-28 13:56:47 - logger - INFO - File ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg opened successfully
+2024-06-28 13:56:47 - logger - INFO - Папка ./input/ успешно открыта
+2024-06-28 13:56:48 - logger - INFO - Изображение ./input/Changeling_masked.jpg успешно обработано
+2024-06-28 13:56:48 - logger - INFO - Изображение ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png успешно обработано
+2024-06-28 13:56:48 - logger - INFO - Изображение ./input/nvidia-logo.png успешно обработано
+2024-06-28 13:56:48 - logger - INFO - Изображение ./input/Phoenix.jpg успешно обработано
+2024-06-28 13:56:48 - logger - INFO - Изображение ./input/risovach.ru (5).jpg успешно обработано
+2024-06-28 13:56:48 - logger - INFO - Изображение ./input/test.bmp успешно обработано
+2024-06-28 13:56:48 - logger - INFO - Изображение ./input/test.gif успешно обработано
+2024-06-28 13:56:48 - logger - INFO - Изображение ./input/Why.jpg успешно обработано
+2024-06-28 13:56:48 - logger - INFO - Изображение ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg успешно обработано
+2024-06-28 13:56:48 - logger - INFO - Изображение ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg успешно обработано
+2024-06-28 13:56:48 - logger - INFO - Изображение ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg успешно обработано
+2024-06-28 13:56:49 - logger - INFO - Папка ./output успешно очищена!
+2024-06-28 13:56:49 - logger - INFO - File ./output/out.jpeg successfully saved
+2024-06-28 13:56:49 - logger - INFO - File ./output/out(1).jpeg successfully saved
+2024-06-28 13:56:49 - logger - INFO - File ./output/out(2).jpeg successfully saved
+2024-06-28 13:56:49 - logger - INFO - File ./output/out(3).jpeg successfully saved
+2024-06-28 13:56:49 - logger - INFO - File ./output/out(4).jpeg successfully saved
+2024-06-28 13:56:49 - logger - INFO - File ./output/out(5).jpeg successfully saved
+2024-06-28 13:56:49 - logger - INFO - File ./output/out(7).jpeg successfully saved
+2024-06-28 13:56:49 - logger - INFO - File ./output/out(8).jpeg successfully saved
+2024-06-28 13:56:49 - logger - INFO - File ./output/out(9).jpeg successfully saved
+2024-06-28 13:56:49 - logger - INFO - File ./output/out(10).jpeg successfully saved
+2024-06-28 14:05:18 - logger - INFO - Интерфейс успешно создан!
+2024-06-28 14:05:20 - logger - INFO - Параметры сохранены
+2024-06-28 14:05:20 - logger - INFO - Параметры сохранены
+2024-06-28 14:05:20 - logger - INFO - File ./input/Changeling_masked.jpg opened successfully
+2024-06-28 14:05:20 - logger - INFO - File ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png opened successfully
+2024-06-28 14:05:20 - logger - INFO - File ./input/nvidia-logo.png opened successfully
+2024-06-28 14:05:20 - logger - INFO - File ./input/Phoenix.jpg opened successfully
+2024-06-28 14:05:20 - logger - INFO - File ./input/risovach.ru (5).jpg opened successfully
+2024-06-28 14:05:20 - logger - INFO - File ./input/test.bmp opened successfully
+2024-06-28 14:05:20 - logger - ERROR - Не удалось открыть изображение по пути: ./input/test.gif
+2024-06-28 14:05:20 - logger - INFO - File ./input/test.gif opened successfully
+2024-06-28 14:05:20 - logger - INFO - File ./input/Why.jpg opened successfully
+2024-06-28 14:05:20 - logger - INFO - File ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg opened successfully
+2024-06-28 14:05:20 - logger - INFO - File ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg opened successfully
+2024-06-28 14:05:20 - logger - INFO - File ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg opened successfully
+2024-06-28 14:05:20 - logger - INFO - Папка ./input/ успешно открыта
+2024-06-28 14:05:21 - logger - INFO - Изображение ./input/Changeling_masked.jpg успешно обработано
+2024-06-28 14:05:21 - logger - INFO - Изображение ./input/nvidia-logo.png успешно обработано
+2024-06-28 14:05:21 - logger - INFO - Изображение ./input/Phoenix.jpg успешно обработано
+2024-06-28 14:05:21 - logger - INFO - Изображение ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png успешно обработано
+2024-06-28 14:05:21 - logger - INFO - Изображение ./input/risovach.ru (5).jpg успешно обработано
+2024-06-28 14:05:21 - logger - INFO - Изображение ./input/test.bmp успешно обработано
+2024-06-28 14:05:21 - logger - INFO - Изображение ./input/test.gif успешно обработано
+2024-06-28 14:05:21 - logger - INFO - Изображение ./input/Why.jpg успешно обработано
+2024-06-28 14:05:21 - logger - INFO - Изображение ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg успешно обработано
+2024-06-28 14:05:21 - logger - INFO - Изображение ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg успешно обработано
+2024-06-28 14:05:21 - logger - INFO - Изображение ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg успешно обработано
+2024-06-28 14:05:21 - logger - INFO - Папка ./output успешно очищена!
+2024-06-28 14:05:21 - logger - INFO - Изображения успешно сохранены в папку ./output/out
+2024-06-28 14:10:22 - logger - INFO - Интерфейс успешно создан!
+2024-06-28 14:10:35 - logger - INFO - Параметры сохранены
+2024-06-28 14:10:35 - logger - INFO - Параметры сохранены
+2024-06-28 14:10:35 - logger - INFO - File ./input/Changeling_masked.jpg opened successfully
+2024-06-28 14:10:35 - logger - INFO - File ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png opened successfully
+2024-06-28 14:10:35 - logger - INFO - File ./input/nvidia-logo.png opened successfully
+2024-06-28 14:10:35 - logger - INFO - File ./input/Phoenix.jpg opened successfully
+2024-06-28 14:10:35 - logger - INFO - File ./input/risovach.ru (5).jpg opened successfully
+2024-06-28 14:10:35 - logger - INFO - File ./input/test.bmp opened successfully
+2024-06-28 14:10:35 - logger - ERROR - Не удалось открыть изображение по пути: ./input/test.gif
+2024-06-28 14:10:35 - logger - INFO - File ./input/test.gif opened successfully
+2024-06-28 14:10:35 - logger - INFO - File ./input/Why.jpg opened successfully
+2024-06-28 14:10:35 - logger - INFO - File ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg opened successfully
+2024-06-28 14:10:35 - logger - INFO - File ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg opened successfully
+2024-06-28 14:10:35 - logger - INFO - File ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg opened successfully
+2024-06-28 14:10:35 - logger - INFO - Папка ./input/ успешно открыта
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/Changeling_masked.jpg успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/test.gif успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/nvidia-logo.png успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/test.bmp успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/Phoenix.jpg успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/Why.jpg успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/Changeling_masked.jpg успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/risovach.ru (5).jpg успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/Changeling_masked.jpg успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/nvidia-logo.png успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/nvidia-logo.png успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/nvidia-logo.png успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/Changeling_masked.jpg успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/risovach.ru (5).jpg успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/Phoenix.jpg успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/risovach.ru (5).jpg успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/Phoenix.jpg успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/risovach.ru (5).jpg успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/chaos_gods_wallpaper_by_kridily_d1v7vv1.png успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/test.gif успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/test.gif успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/test.gif успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/test.bmp успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/test.bmp успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/Why.jpg успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/Why.jpg успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/test.bmp успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/Why.jpg успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/_01e3e0be-d2f6-4847-9b58-04fba51f8cb9.jpg успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/_1d458ecb-1da7-4ecd-9da5-b37781884465.jpg успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Изображение ./input/_4fcc7ad3-3b8c-4f94-9f8b-ecdf779e3224.jpg успешно обработано
+2024-06-28 14:10:36 - logger - INFO - Папка ./output успешно очищена!
+2024-06-28 14:10:37 - logger - INFO - Изображения успешно сохранены в папку ./output/out
