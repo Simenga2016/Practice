@@ -279,6 +279,7 @@ def add(x):
 
     return inner_sum
 
+
 class User:
     def __init__(self):
         self.rank = -8
@@ -292,6 +293,7 @@ class User:
                 self.rank += 1
         if self.rank == 8:
             self.progress = 0
+
     def inc_progress(self, rank):
         if rank > 8 or rank < -8 or rank == 0:
             raise Exception("Invalid rank")
@@ -332,6 +334,7 @@ def count_calls(func, *args, **kwargs):
         if event == 'call':
             call_count += 1
         return trace_calls
+
     sys.settrace(trace_calls)
     func(*args, **kwargs)
     sys.settrace(None)
@@ -339,31 +342,66 @@ def count_calls(func, *args, **kwargs):
     return call_count
 
 
-def beeramid(bonus,price):
+def beeramid(bonus, price):
     count = bonus // price
     i = 0
-    while count>0:
-        count-= i**2
+    while count > 0:
+        count -= i ** 2
         print(count)
         i += 1
-    if count<0:
-        i-=1
-    i-=1
+    if count < 0:
+        i -= 1
+    i -= 1
     return i if i >= 0 else 0
 
 
-def mean(array_a,array_b):
+def mean(array_a, array_b):
     num = 0
     denum = 0
     for _ in range(len(array_a)):
-        num += (array_a[_]-array_b[_])**2
-        denum +=1
-    return num/denum
+        num += (array_a[_] - array_b[_]) ** 2
+        denum += 1
+    return num / denum
 
 
 def pascal_to_snake_case(s):
     from re import sub
     return sub(r'(?<!^)(?=[A-Z])', '_', s).lower()
 
+
+def snail(array):
+    result = []
+    if array == [[]]:
+        return [[]]
+    n = len(array)
+    top, bottom = 0, n - 1
+    left, right = 0, n - 1
+
+    while top <= bottom and left <= right:
+        # left to right
+        for i in range(left, right + 1):
+            result.append(array[top][i])
+        top += 1
+
+        # top to bot
+        for i in range(top, bottom + 1):
+            result.append(array[i][right])
+        right -= 1
+
+        if top <= bottom:
+            #right to left
+            for i in range(right, left - 1, -1):
+                result.append(array[bottom][i])
+            bottom -= 1
+
+        if left <= right:
+            # bot to top
+            for i in range(bottom, top - 1, -1):
+                result.append(array[i][left])
+            left += 1
+
+    return result
+
+
 if __name__ == '__main__':
-    print(pascal_to_snake_case('Apple12ImaxPro'))
+    print(snail([[]]))

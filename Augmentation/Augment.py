@@ -4,6 +4,13 @@ from logger import logger
 
 
 def apply_blur(img, params):
+    """
+    Добавляет размытие.
+
+    :param img: Исходное изображение
+    :param params: Параметры
+    :return: None
+    """
     if params.get('enable', False):
         power_x = random.randint(*params.get('power_x', (11, 11)))
         power_y = random.randint(*params.get('power_y', (11, 11)))
@@ -11,12 +18,26 @@ def apply_blur(img, params):
 
 
 def apply_brightness(img, params):
+    """
+    Добавляет яркость.
+
+    :param img: Исходное изображение
+    :param params: Параметры
+    :return: None
+    """
     if params.get('enable', False):
         brightness = random.randint(*params.get('range', (100, 100))) / 100
         img.change_brightness(brightness)
 
 
 def apply_flip(img, params):
+    """
+    Отзеркаливает изображение.
+
+    :param img: Исходное изображение
+    :param params: Параметры
+    :return: None
+    """
     if params.get('enable', False):
         flip = random.choice([x for x in params.get('flip_code', [0, ]) if x is not None])
         if flip == -1:
@@ -26,11 +47,25 @@ def apply_flip(img, params):
 
 
 def apply_saturation(img, params):
+    """
+    Добавляет насыщенность.
+
+    :param img: Исходное изображение
+    :param params: Параметры
+    :return: None
+    """
     if params.get('enable', False):
         img.change_saturation(random.randint(*params.get('range', (50, 50))) / 100)
 
 
 def apply_noise(img, params):
+    """
+    Добавляет шум.
+
+    :param img: Исходное изображение 
+    :param params: Параметры
+    :return: None
+    """
     if params.get('enable', False):
         var = random.randint(*params.get('variance_range', (4, 4)))
         mean = random.randint(*params.get('mean_range', (4, 4)))
@@ -38,11 +73,25 @@ def apply_noise(img, params):
 
 
 def apply_contrast(img, params):
+    """
+    Добавляет контрастность.
+
+    :param img: Исходное изображение
+    :param params: Параметры
+    :return: None
+    """
     if params.get('enable', False):
         img.change_contrast(random.randint(*params.get('range', (100, 100))) / 100)
 
 
 def apply_crop(img, params):
+    """
+    Обрезает изображение.
+
+    :param img: Исходное изображение
+    :param params: Параметры
+    :return: None
+    """
     if params.get('enable', False):
         tmp_img = deepcopy(img)
         while not (tmp_img is not None and tmp_img.image.size > 0):
@@ -59,6 +108,13 @@ def apply_crop(img, params):
 
 
 def apply_resize(img, params):
+    """
+    Изменяет размер.
+
+    :param img: Исходное изображение
+    :param params: Параметры
+    :return: None
+    """
     if params.get('enable', False):
         wid = random.randint(*params.get('width_range', (512, 512)))
         hei = random.randint(*params.get('height_range', (512, 512)))
@@ -66,11 +122,25 @@ def apply_resize(img, params):
 
 
 def apply_rotate(img, params):
+    """
+    Поварачивает изображение.
+
+    :param img: Исходное изображение
+    :param params: Параметры
+    :return: None
+    """
     if params.get('enable', False):
         img.rotate_image(random.randint(*params.get('angle_range', (0, 0))))
 
 
 def apply_text(img, params):
+    """
+    Добавляет текст.
+
+    :param img: Исходное изображение
+    :param params: Параметры
+    :return: None
+    """
     if params.get('enable', False):
         text = params.get('text', ' ')
         for txt in text.split('\n'):
@@ -98,6 +168,13 @@ def apply_text(img, params):
 
 
 def apply_augmentations(img, params):
+    """
+    Применяет все указанные модификации.
+
+    :param img: Исходное изображение
+    :param params: Параметры
+    :return: None
+    """
     apply_blur(img, params.get('blur', {}))
     apply_brightness(img, params.get('brightness', {}))
     apply_flip(img, params.get('flip', {}))
