@@ -58,7 +58,8 @@ class Image:
         :return: Копия изображения.
         """
         try:
-            return deepcopy(self)
+            if self.image or  self.image.size > 0:
+                return deepcopy(self)
         except Exception as e:
             logger.error(f'Ошибка копирования {e}')
 
@@ -83,10 +84,11 @@ class Image:
         :return: Повернутое изображение.
         """
         try:
-            (h, w) = self.image.shape[:2]
-            center = (w // 2, h // 2)
-            M = cv2.getRotationMatrix2D(center, angle, 1.0)
-            self.image = cv2.warpAffine(self.image, M, (w, h))
+            if self.image is not None and self.image.size >0:
+                (h, w) = self.image.shape[:2]
+                center = (w // 2, h // 2)
+                M = cv2.getRotationMatrix2D(center, angle, 1.0)
+                self.image = cv2.warpAffine(self.image, M, (w, h))
         except Exception as e:
             logger.error(f'Ошибка поворота изображения {self.path}: {e}')
 
@@ -97,7 +99,8 @@ class Image:
         :return: Отраженное изображение.
         """
         try:
-            self.image = cv2.flip(self.image, 0)
+            if self.image is not None and self.image.size >0:
+                self.image = cv2.flip(self.image, 0)
         except Exception as e:
             logger.error(f'Ошибка отзеркаливания изображения {self.path}: {e}')
 
@@ -108,7 +111,8 @@ class Image:
         :return: Отраженное изображение.
         """
         try:
-            self.image = cv2.flip(self.image, 1)
+            if self.image is not None and self.image.size >0:
+                self.image = cv2.flip(self.image, 1)
         except Exception as e:
             logger.error(f'Ошибка отзеркаливания изображения {self.path}: {e}')
 
@@ -121,6 +125,10 @@ class Image:
         """
         try:
             if self.image is not None and self.image.size > 0:
+                if not width:
+                    width = None
+                if not height:
+                    height = None
                 if width is None and height is None:
                     raise ValueError("Необходимо указать хотя бы один из параметров: width или height.")
 
@@ -149,6 +157,16 @@ class Image:
         :param height: Высота области обрезки.
         """
         try:
+            if x < 0:
+                logger.warning(f'Неправильные значения параметров обрезания! Введены: x={x}, y={y}')
+                x = 0
+            if y < 0:
+                logger.warning(f'Неправильные значения параметров обрезания! Введены: x={x}, y={y}')
+                y = 0
+            if width < 0:
+                width = 0
+            if height < 0:
+                height = 0
             if not width and height:
                 self.image = self.image[y:y + height, x:]
             elif width and not height:
@@ -157,6 +175,8 @@ class Image:
                 self.image = self.image[y:, x:]
             else:
                 self.image = self.image[y:y + height, x:x + width]
+            if self. image is None or self.image.size <= 0:
+                self.image = None
         except Exception as e:
             logger.error(f'Ошибка обрезки изображения {self.path}: {e}')
 
@@ -170,14 +190,15 @@ class Image:
         """
 
         try:
-            power_y += 1 if power_y % 2 == 0 else 0  # Исправление на нечётность - необходима для метода размытия.
-            power_x += 1 if power_x % 2 == 0 else 0  # Исправление на нечётность - необходима для метода размытия.
-            power = (power_x, power_y)
-            if not (isinstance(power, tuple) and len(power) == 2 and all(isinstance(x, int) for x in power)):
-                raise ValueError("Параметр 'power' должен быть кортежем из двух целых чисел.")
-            if not (all(x > 0 for x in power)):  # Проверка на отрицательность
-                raise ValueError("Значения в параметре 'power' должны быть больше нуля.")
-            self.image = cv2.GaussianBlur(self.image, power, 0)
+            if self.image is not None and self.image.size >0:
+                power_y += 1 if power_y % 2 == 0 else 0  # Исправление на нечётность - необходима для метода размытия.
+                power_x += 1 if power_x % 2 == 0 else 0  # Исправление на нечётность - необходима для метода размытия.
+                power = (power_x, power_y)
+                if not (isinstance(power, tuple) and len(power) == 2 and all(isinstance(x, int) for x in power)):
+                    raise ValueError("Параметр 'power' должен быть кортежем из двух целых чисел.")
+                if not (all(x > 0 for x in power)):  # Проверка на отрицательность
+                    raise ValueError("Значения в параметре 'power' должны быть больше нуля.")
+                self.image = cv2.GaussianBlur(self.image, power, 0)
         except Exception as e:
             logger.error(f'Ошибка размытия изображения {self.path}: {e}')
 
@@ -192,12 +213,13 @@ class Image:
         :return: Обрезанное изображение.
         """
         try:
-            shape = self.image.shape[:2]
-            height = height if height else random.randint((shape[0] - 1) // 10, shape[0] - (shape[0] - 1) // 10)
-            width = width if width else random.randint((shape[1] - 1) // 10, shape[1] - (shape[1] - 1) // 10)
-            x = x if x else random.randint(max(shape[0] - height, 50) // 10, max(shape[0] - height, 100))
-            y = y if y else random.randint(max(shape[1] - width, 50) // 10, max(shape[1] - width, 100))
-            self.crop_image(x, y, width, height)
+            if self.image is not None and self.image.size >0:
+                shape = self.image.shape[:2]
+                height = height if height else random.randint((shape[0] - 1) // 10, shape[0] - (shape[0] - 1) // 10)
+                width = width if width else random.randint((shape[1] - 1) // 10, shape[1] - (shape[1] - 1) // 10)
+                x = x if x else random.randint(max(shape[0] - height, 50) // 10, max(shape[0] - height, 100))
+                y = y if y else random.randint(max(shape[1] - width, 50) // 10, max(shape[1] - width, 100))
+                self.crop_image(x, y, width, height)
         except Exception as e:
             logger.error(f'Ошибка обрезки изображения {self.path}: {e}')
 
@@ -248,11 +270,12 @@ class Image:
         :return: Изображение с добавленным шумом.
         """
         try:
-            row, col, ch = self.image.shape
-            sigma = var ** 0.5
-            gauss = np.random.normal(mean, sigma, (row, col, ch))
-            noisy = self.image + gauss.reshape(row, col, ch)
-            self.image = np.clip(noisy, 0, 255).astype(np.uint8)
+            if self.image is not None and self.image.size >0:
+                row, col, ch = self.image.shape
+                sigma = var ** 0.5
+                gauss = np.random.normal(mean, sigma, (row, col, ch))
+                noisy = self.image + gauss.reshape(row, col, ch)
+                self.image = np.clip(noisy, 0, 255).astype(np.uint8)
         except Exception as e:
             logger.error(f'Ошибка добавления шума на изображение {self.path}: {e}')
 
@@ -263,9 +286,10 @@ class Image:
         :return: Изображение с измененной контрастностью.
         """
         try:
-            if contrast < 0:
-                raise ValueError("Контраст должен быть неотрицательным.")
-            self.image = cv2.convertScaleAbs(self.image, alpha=contrast, beta=0)
+            if self.image is not None and self.image.size >0:
+                if contrast < 0:
+                    raise ValueError("Контраст должен быть неотрицательным.")
+                self.image = cv2.convertScaleAbs(self.image, alpha=contrast, beta=0)
         except Exception as e:
             logger.error(f'Ошибка изменения контраста изображения {self.path}: {e}')
 
@@ -276,9 +300,10 @@ class Image:
         :return: Изображение с измененной яркостью.
         """
         try:
-            if brightness < 0:
-                raise ValueError("Яркость должна быть неотрицательной.")
-            self.image = cv2.convertScaleAbs(self.image, alpha=brightness, beta=0)
+            if self.image is not None and self.image.size >0:
+                if brightness < 0:
+                    raise ValueError("Яркость должна быть неотрицательной.")
+                self.image = cv2.convertScaleAbs(self.image, alpha=brightness, beta=0)
         except Exception as e:
             logger.error(f'Ошибка изменения яркости изображения {self.path}: {e}')
 
@@ -289,14 +314,15 @@ class Image:
         :return: Изображение с измененной насыщенностью.
         """
         try:
-            if saturation < 0:
-                logger.error("Насыщенность должна быть неотрицательной.")
-            hsv_image = cv2.cvtColor(self.image, cv2.COLOR_BGR2HSV)
-            hsv_image = np.float32(hsv_image)
-            hsv_image[:, :, 1] *= saturation
-            hsv_image[:, :, 1] = np.clip(hsv_image[:, :, 1], 0, 255)
-            hsv_image = np.uint8(hsv_image)
-            self.image = cv2.cvtColor(hsv_image, cv2.COLOR_HSV2BGR)
+            if self.image is not None and self.image.size >0:
+                if saturation < 0:
+                    logger.error("Насыщенность должна быть неотрицательной.")
+                hsv_image = cv2.cvtColor(self.image, cv2.COLOR_BGR2HSV)
+                hsv_image = np.float32(hsv_image)
+                hsv_image[:, :, 1] *= saturation
+                hsv_image[:, :, 1] = np.clip(hsv_image[:, :, 1], 0, 255)
+                hsv_image = np.uint8(hsv_image)
+                self.image = cv2.cvtColor(hsv_image, cv2.COLOR_HSV2BGR)
         except Exception as e:
             logger.error(f'Ошибка изменения насыщенности изображения {self.path}: {e}')
 
