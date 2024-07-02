@@ -191,6 +191,7 @@ def test_png():
 
     assert np.allclose(img_test, expected_img, atol=1), "Обработка формата png не верна!"
 
+
 def test_convert():
     """
     Проверяем открытие и сохранение в формате png.
@@ -225,15 +226,24 @@ def test_complex():
 
     assert np.allclose(img_test, expected_img, atol=1), "Отражение не верно!"
 
+
 def test_nothing():
     img = Augmentation.Image('.path/to/nothing/there.nothing')
     assert img == None or img.image == None, "Найдено что-то в пустоте!"
+
 
 def test_not_image():
     img = Augmentation.Image('./test/cat.txt')
     assert img == None or img.image == None, "Читаем текст вместо изображения!"
 
+
 def test_void():
     img = Augmentation.Image('./test/Void.txt')
     img.visualize_image()
     assert img == None or img.image == None, "Читаем пустоту!"
+
+
+def test_zero_crop():
+    img = Augmentation.Image('./test/test.jpg')
+    img.crop_image(65, 65, -1, -1)
+    assert img.image is None or img.image.size is None
