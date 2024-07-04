@@ -1,15 +1,28 @@
 import logging
 from logging.handlers import TimedRotatingFileHandler
+
+
 def create_logger():
-    # Создаем TimedRotatingFileHandler
+    """
+    Создание логгера.
+
+    Создает и настраивает логгер с двумя обработчиками:
+    - TimedRotatingFileHandler для записи в файл с временным хранением
+    - StreamHandler для вывода логов в консоль
+
+    Returns:
+        logging.Logger: Объект логгера, настроенный для записи в файл Augmentator.log
+                        и вывода в консоль.
+    """
+    # Создаем TimedRotatingFileHandler для файла Augmentator.log
     file_handler = TimedRotatingFileHandler(
         "Augmentator.log",
-        when="H",
-        interval=8,
-        backupCount=3
+        when="H",  # Ротация каждый час
+        interval=8,  # Интервал в часах
+        backupCount=3  # Хранить до 3 ротаций
     )
 
-    # Настраиваем формат и уровень логирования для file_handler
+    # Настройка формата и уровня логирования для file_handler
     file_handler.setLevel(logging.ERROR)
     file_handler.setFormatter(logging.Formatter(
         '%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -24,11 +37,12 @@ def create_logger():
         datefmt='%Y-%m-%d %H:%M:%S'
     ))
 
-    # Создаем логгер
+    # Создаем и настраиваем логгер
     logger = logging.getLogger(__name__)
     logger.setLevel(logging.INFO)
     logger.addHandler(file_handler)
     logger.addHandler(stream_handler)
+
     return logger
 
 logger = create_logger()

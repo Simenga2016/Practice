@@ -389,7 +389,7 @@ def snail(array):
         right -= 1
 
         if top <= bottom:
-            #right to left
+            # right to left
             for i in range(right, left - 1, -1):
                 result.append(array[bottom][i])
             bottom -= 1
@@ -401,6 +401,7 @@ def snail(array):
             left += 1
 
     return result
+
 
 def to_roman(num):
     val = [
@@ -424,6 +425,7 @@ def to_roman(num):
         i += 1
     return roman_num
 
+
 def from_roman(s):
     roman = {
         'M': 1000, 'CM': 900, 'D': 500, 'CD': 400,
@@ -433,13 +435,105 @@ def from_roman(s):
     i = 0
     num = 0
     while i < len(s):
-        if i+1 < len(s) and s[i:i+2] in roman:
-            num += roman[s[i:i+2]]
+        if i + 1 < len(s) and s[i:i + 2] in roman:
+            num += roman[s[i:i + 2]]
             i += 2
         else:
             num += roman[s[i]]
             i += 1
     return num
 
+
+import copy
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+
+
+def get_live_neighbors(grid, row, col):
+    directions = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
+    live_neighbors = 0
+
+    for dr, dc in directions:
+        r, c = row + dr, col + dc
+        if 0 <= r < len(grid) and 0 <= c < len(grid[0]) and grid[r][c] == 1:
+            live_neighbors += 1
+
+    return live_neighbors
+
+
+def next_generation(grid):
+    rows, cols = len(grid), len(grid[0])
+    new_grid = copy.deepcopy(grid)
+
+    for row in range(rows):
+        for col in range(cols):
+            live_neighbors = get_live_neighbors(grid, row, col)
+            if grid[row][col] == 1:  # Live cell
+                if live_neighbors < 2 or live_neighbors > 3:
+                    new_grid[row][col] = 0
+            else:  # Dead cell
+                if live_neighbors == 3:
+                    new_grid[row][col] = 1
+
+    return new_grid
+
+
+def crop_grid(grid):
+    rows = len(grid)
+    cols = len(grid[0])
+    top, bottom, left, right = rows, 0, cols, 0
+
+    for row in range(rows):
+        for col in range(cols):
+            if grid[row][col] == 1:
+                if row < top: top = row
+                if row > bottom: bottom = row
+                if col < left: left = col
+                if col > right: right = col
+
+    if top > bottom or left > right:
+        return [[]]
+
+    return [row[left:right + 1] for row in grid[top:bottom + 1]]
+
+
+def expand_grid(grid, padding=1):
+    rows = len(grid)
+    cols = len(grid[0])
+    new_grid = [[0] * (cols + 2 * padding) for _ in range(rows + 2 * padding)]
+
+    for row in range(rows):
+        for col in range(cols):
+            new_grid[row + padding][col + padding] = grid[row][col]
+
+    return new_grid
+
+
+def game_of_life(grid, generations):
+    grid = expand_grid(grid, padding=generations)
+    grids = [copy.deepcopy(grid)]
+    for _ in range(generations):
+        grid = next_generation(grid)
+        grids.append(copy.deepcopy(grid))
+    return grids
+
+
+def animate_game_of_life(grids): # Немножко поиграл дальше задачи, подкрутив визуализацию
+    fig, ax = plt.subplots()
+    ax.set_axis_off()
+    mat = ax.matshow(grids[0], cmap='binary')
+
+    def update(frame):
+        mat.set_data(grids[frame])
+        return [mat]
+
+    ani = animation.FuncAnimation(fig, update, frames=len(grids), interval=200, blit=True)
+    plt.show()
+
+def spin_words(sentence):
+    words = sentence.split()
+    spun_words = [word[::-1] if len(word) >= 5 else word for word in words]
+    return ' '.join(spun_words)
+
 if __name__ == '__main__':
-    print(from_roman('MMMCMXCIX'))
+    print(pascal_to_snake_case('Agg3hHfg'))
